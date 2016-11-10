@@ -152,5 +152,20 @@ public class ComponentInstanceImpl extends LocatedElementImpl implements Compone
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the name associated with a located element.
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getName() {
+		ComponentPrototype prototype = getPrototype();
+		if (prototype != null) {
+			return prototype.getName();
+		}
+		return null;
+	}
 
 } //ComponentInstanceImpl

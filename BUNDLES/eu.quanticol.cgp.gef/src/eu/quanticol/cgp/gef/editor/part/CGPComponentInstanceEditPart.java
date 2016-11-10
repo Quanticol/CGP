@@ -3,12 +3,13 @@ package eu.quanticol.cgp.gef.editor.part;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 
-public class CGPComponentInstanceEditPart extends AbstractGraphicalEditPart {
+import eu.quanticol.cgp.gef.editor.figure.CGPComponentFigure;
+
+public class CGPComponentInstanceEditPart extends CGPLocatedElementEditPart {
 
 	@Override
 	protected IFigure createFigure() {
-		// TODO Auto-generated method stub
-		return null;
+		return new CGPComponentFigure();
 	}
 
 	@Override

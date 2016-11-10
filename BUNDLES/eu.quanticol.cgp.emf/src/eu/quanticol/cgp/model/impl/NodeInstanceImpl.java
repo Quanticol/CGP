@@ -263,5 +263,20 @@ public class NodeInstanceImpl extends LocatedElementImpl implements NodeInstance
 		}
 		return super.eIsSet(featureID);
 	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the name associated with a located element.
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public String getName() {
+		NodePrototype prototype = getPrototype();
+		if (prototype != null) {
+			return prototype.getName();
+		}
+		return null;
+	}
 
 } //NodeInstanceImpl

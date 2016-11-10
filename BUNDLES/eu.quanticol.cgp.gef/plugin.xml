@@ -11,5 +11,20 @@
             name="CGP Graphical Editor">
       </editor>
    </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="eu.quanticol.cgp.gef.view_category"
+            name="Carma Graphical PlugIn">
+      </category>
+      <view
+            allowMultiple="false"
+            category="eu.quanticol.cgp.gef.view_category"
+            class="eu.quanticol.cgp.gef.SpatialModelPrototypesView"
+            id="eu.quanticol.cgp.gef.detailview"
+            name="Model Prototypes"
+            restorable="true">
+      </view>
+   </extension>
 
 </plugin>

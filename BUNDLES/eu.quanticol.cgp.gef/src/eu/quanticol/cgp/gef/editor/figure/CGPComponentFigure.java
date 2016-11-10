@@ -3,52 +3,36 @@
  */
 package eu.quanticol.cgp.gef.editor.figure;
 
+import org.eclipse.draw2d.ChopboxAnchor;
 import org.eclipse.draw2d.ConnectionAnchor;
-import org.eclipse.draw2d.EllipseAnchor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
-import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
-import org.eclipse.draw2d.ScalablePolygonShape;
+import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
-import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 
 /**
  * @author loreti
  *
  */
-public class CGPNodeFigure extends Figure implements CGPFigure {
+public class CGPComponentFigure extends Figure implements CGPFigure {
 	private Label label;
-	private IFigure figure;
+	private RectangleFigure rectangle;
 	private ConnectionAnchor connectionAnchor;
    
-	public CGPNodeFigure() {
+	public CGPComponentFigure() {
 		setLayoutManager(new XYLayout());
-		figure = buildFigure();
-		add(figure);
+		rectangle = new RectangleFigure();
+		add(rectangle);
 		label = new Label();
 		add(label);
 	}
  
-	private IFigure buildFigure(){
-
-    	ScalablePolygonShape myShape = new ScalablePolygonShape();
-
-		
-		myShape.addPoint(new Point(10,5));
-		myShape.addPoint(new Point(5,0));
-		myShape.addPoint(new Point(0,5));
-		myShape.addPoint(new Point(5,10));
-		myShape.addPoint(new Point(10,5));
-    	return myShape;
-
-	}	
-	
 	@Override 
 	protected void paintFigure(Graphics graphics) {
 		Rectangle r = getBounds().getCopy();
-		setConstraint(figure, new Rectangle(0, 0, r.width, r.height));
+		setConstraint(rectangle, new Rectangle(0, 0, r.width, r.height));
 		setConstraint(label, new Rectangle(0, 0, r.width, r.height));
 	}
    
@@ -60,8 +44,8 @@ public class CGPNodeFigure extends Figure implements CGPFigure {
 	@Override
 	public ConnectionAnchor getConnectionAnchor() {
 		if (connectionAnchor == null) {
-			connectionAnchor = new EllipseAnchor(this);
-	    }
+		      connectionAnchor = new ChopboxAnchor(this);
+		}
 		return connectionAnchor;
 	}
 }

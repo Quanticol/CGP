@@ -102,5 +102,14 @@ public interface LocatedElement extends EObject {
 	 * @generated
 	 */
 	void setModel(SpatialModel value);
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the name associated with a located element.
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	String getName();
+
 
 } // LocatedElement
