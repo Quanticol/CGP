@@ -68,7 +68,7 @@ public interface NodeInstance extends LocatedElement {
 	EList<ConnectionInstance> getIncomingConnections();
 
 	/**
-	 * Returns the value of the '<em><b>Outgoing Connections</b></em>' reference list.
+	 * Returns the value of the '<em><b>Outgoing Connections</b></em>' containment reference list.
 	 * The list contents are of type {@link eu.quanticol.cgp.model.ConnectionInstance}.
 	 * It is bidirectional and its opposite is '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
@@ -77,10 +77,10 @@ public interface NodeInstance extends LocatedElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outgoing Connections</em>' reference list.
+	 * @return the value of the '<em>Outgoing Connections</em>' containment reference list.
 	 * @see eu.quanticol.cgp.model.CGPPackage#getNodeInstance_OutgoingConnections()
 	 * @see eu.quanticol.cgp.model.ConnectionInstance#getFrom
-	 * @model opposite="from"
+	 * @model opposite="from" containment="true"
 	 * @generated
 	 */
 	EList<ConnectionInstance> getOutgoingConnections();

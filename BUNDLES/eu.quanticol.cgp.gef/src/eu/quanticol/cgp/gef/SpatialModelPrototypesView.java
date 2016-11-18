@@ -32,6 +32,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
 import eu.quanticol.cgp.gef.editor.CGPGraphicalEditor;
+import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeCreateCommand;
+import eu.quanticol.cgp.gef.view.listeners.AddNewComponentPrototypeListener;
 import eu.quanticol.cgp.model.CGPFactory;
 import eu.quanticol.cgp.model.ComponentPrototype;
 import eu.quanticol.cgp.model.SpatialModel;
@@ -49,6 +51,8 @@ public class SpatialModelPrototypesView extends ViewPart {
 	private CTabItem pathsCTabItem;
 	private ScrolledComposite componentsScrolledComposite;
 	private ScrolledComposite pathsScrolledComposite;
+	private Text newComponentDescription;
+	private Text newComponentName;
 
 	public SpatialModelPrototypesView() {
 		IWorkbench workbench = PlatformUI.getWorkbench();
@@ -123,12 +127,11 @@ public class SpatialModelPrototypesView extends ViewPart {
 		setupContainer(parent);
 		setupTabFolder();
 
-		Button generateButton = new Button(this.container, SWT.NONE);
-		generateButton.setText("Generate Code");
+		
 		
 		componentsScrolledComposite = createScrolledComposite(categoriesCTabFolder, componentsCTabItem, white);
 		pathsScrolledComposite = createScrolledComposite(categoriesCTabFolder, pathsCTabItem, white);
-
+		categoriesCTabFolder.setSelection(componentsCTabItem);
 		Composite componentsContainerComposite = new Composite(componentsScrolledComposite, SWT.NONE);
 		componentsContainerComposite.setLayout(new FillLayout());
 		componentsScrolledComposite.setContent(componentsContainerComposite);
@@ -226,31 +229,46 @@ public class SpatialModelPrototypesView extends ViewPart {
 		Label newComponentNameLabel = new Label(labelledTextName, SWT.NONE);
 		newComponentNameLabel.setText("Name");
 		newComponentNameLabel.setSize(100, SWT.DEFAULT);
-		Text newComponentName = new Text(labelledTextName, SWT.NONE);
+		newComponentName = new Text(labelledTextName, SWT.NONE);
 
 		Group labelledTextDescription = new Group(componentTableGroup, SWT.NONE);
 		labelledTextDescription.setLayout(new FillLayout());
 		Label newComponentDescriptionLabel = new Label(labelledTextDescription, SWT.NONE);
 		newComponentDescriptionLabel.setText("Description");
 		newComponentDescriptionLabel.setSize(100, SWT.DEFAULT);
-		Text newComponentDescription = new Text(labelledTextDescription, SWT.NONE);
+		newComponentDescription = new Text(labelledTextDescription, SWT.NONE);
 
 		Group labelledMenuShapeGroup = new Group(componentTableGroup, SWT.NONE);
 		labelledMenuShapeGroup.setLayout(new FillLayout());
 		Label newComponentShapeLabel = new Label(labelledMenuShapeGroup, SWT.NONE);
 		newComponentShapeLabel.setText("Shape");
 		newComponentShapeLabel.setSize(100, SWT.DEFAULT);
-		Combo shapeCombo = new Combo(labelledMenuShapeGroup, SWT.NONE);
-
+		Combo newComponentShapeCombo = new Combo(labelledMenuShapeGroup, SWT.NONE);
+		newComponentShapeCombo.add("rectangle");
+		newComponentShapeCombo.add("circle");
+		newComponentShapeCombo.add("triangle");
+		newComponentShapeCombo.select(0);
+		
+		
 		Group labelledMenuColourGroup = new Group(componentTableGroup, SWT.NONE);
 		labelledMenuColourGroup.setLayout(new FillLayout());
 		Label newComponentColourLabel = new Label(labelledMenuColourGroup, SWT.NONE);
 		newComponentColourLabel.setText("Colour");
 		newComponentColourLabel.setSize(100, SWT.DEFAULT);
-		Combo colourCombo = new Combo(labelledMenuColourGroup, SWT.NONE);
-
+		Combo newComponentColourCombo = new Combo(labelledMenuColourGroup, SWT.NONE);
+		newComponentColourCombo.add("red");
+		newComponentColourCombo.add("green");
+		newComponentColourCombo.add("blue");
+		newComponentColourCombo.select(0);
+		
 		Button addNew = new Button(componentTableGroup, SWT.NONE);
 		addNew.setText("Add new");
+		String name = newComponentName.getText();
+		String description = newComponentDescription.getText();
+		
+		String shape = newComponentShapeCombo.getItem(newComponentShapeCombo.getSelectionIndex());
+		String colour = newComponentColourCombo.getItem(newComponentColourCombo.getSelectionIndex());
+		addNew.addSelectionListener(new AddNewComponentPrototypeListener(this));
 
 		//
 
@@ -339,19 +357,28 @@ public class SpatialModelPrototypesView extends ViewPart {
 
 	}
 
-	protected void createComponentPrototype(String name, String description) {
+	public void createComponentPrototype() {
 		// ComponentPrototype cp =
 		// CGPFactory.eINSTANCE.createComponentPrototype();
 		// cp.setName(name);
 		// cp.setDescription(description);
 		// cp.setModel(selectedModel);
-		editor.createComponentPrototype(name, description);
+		CGPComponentPrototypeCreateCommand command = new CGPComponentPrototypeCreateCommand();
+		command.setComponentPrototype( CGPFactory.eINSTANCE.createComponentPrototype() );
+		command.setData(newComponentName.getText(), newComponentDescription.getText());
+		command.setParent(this.selectedModel);
+		editor.createComponentPrototype(command);
 	}
 
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public CGPGraphicalEditor getEditor() {
+		
+		return this.editor;
 	}
 
 }

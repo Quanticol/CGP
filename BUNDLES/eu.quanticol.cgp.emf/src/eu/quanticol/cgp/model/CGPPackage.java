@@ -405,7 +405,7 @@ public interface CGPPackage extends EPackage {
 	int NODE_INSTANCE__INCOMING_CONNECTIONS = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing Connections</b></em>' reference list.
+	 * The feature id for the '<em><b>Outgoing Connections</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -506,7 +506,7 @@ public interface CGPPackage extends EPackage {
 	int CONNECTION_INSTANCE = 7;
 
 	/**
-	 * The feature id for the '<em><b>From</b></em>' reference.
+	 * The feature id for the '<em><b>From</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -851,10 +851,10 @@ public interface CGPPackage extends EPackage {
 	EReference getNodeInstance_IncomingConnections();
 
 	/**
-	 * Returns the meta object for the reference list '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
+	 * Returns the meta object for the containment reference list '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Outgoing Connections</em>'.
+	 * @return the meta object for the containment reference list '<em>Outgoing Connections</em>'.
 	 * @see eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections()
 	 * @see #getNodeInstance()
 	 * @generated
@@ -936,10 +936,10 @@ public interface CGPPackage extends EPackage {
 	EClass getConnectionInstance();
 
 	/**
-	 * Returns the meta object for the reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}'.
+	 * Returns the meta object for the container reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>From</em>'.
+	 * @return the meta object for the container reference '<em>From</em>'.
 	 * @see eu.quanticol.cgp.model.ConnectionInstance#getFrom()
 	 * @see #getConnectionInstance()
 	 * @generated
@@ -1235,7 +1235,7 @@ public interface CGPPackage extends EPackage {
 		EReference NODE_INSTANCE__INCOMING_CONNECTIONS = eINSTANCE.getNodeInstance_IncomingConnections();
 
 		/**
-		 * The meta object literal for the '<em><b>Outgoing Connections</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Outgoing Connections</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1305,7 +1305,7 @@ public interface CGPPackage extends EPackage {
 		EClass CONNECTION_INSTANCE = eINSTANCE.getConnectionInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>From</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

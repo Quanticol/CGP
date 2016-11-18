@@ -6,6 +6,7 @@ import eu.quanticol.cgp.model.CGPPackage;
 import eu.quanticol.cgp.model.LocatedElement;
 import eu.quanticol.cgp.model.SpatialModel;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -315,4 +316,29 @@ public abstract class LocatedElementImpl extends MinimalEObjectImpl.Container im
 		return result.toString();
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * Sets the location of the element
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public void setLocation(Point location) {
+	 this.setX(location.x);
+	 this.setY(location.y);
+		
+	}
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the location of the element
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	@Override
+	public Point getLocation() {
+	 return new Point(this.getX(), this.getY());
+		
+	}
+	
 } //LocatedElementImpl

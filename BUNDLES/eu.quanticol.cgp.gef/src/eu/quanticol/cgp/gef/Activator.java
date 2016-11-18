@@ -11,6 +11,9 @@ public class Activator extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "eu.quanticol.cgp.gef"; //$NON-NLS-1$
 
+	public static final int HALF_FIGURE_SIZE = 12;
+	public static final int FIGURE_SIZE = HALF_FIGURE_SIZE*2;
+
 	// The shared instance
 	private static Activator plugin;
 	

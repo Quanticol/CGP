@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,16 +35,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * @generated
  */
 public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container implements ConnectionInstance {
-	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFrom()
-	 * @generated
-	 * @ordered
-	 */
-	protected NodeInstance from;
-
 	/**
 	 * The cached value of the '{@link #getTo() <em>To</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,24 +90,8 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public NodeInstance getFrom() {
-		if (from != null && from.eIsProxy()) {
-			InternalEObject oldFrom = (InternalEObject)from;
-			from = (NodeInstance)eResolveProxy(oldFrom);
-			if (from != oldFrom) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CGPPackage.CONNECTION_INSTANCE__FROM, oldFrom, from));
-			}
-		}
-		return from;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NodeInstance basicGetFrom() {
-		return from;
+		if (eContainerFeatureID() != CGPPackage.CONNECTION_INSTANCE__FROM) return null;
+		return (NodeInstance)eInternalContainer();
 	}
 
 	/**
@@ -125,12 +100,7 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public NotificationChain basicSetFrom(NodeInstance newFrom, NotificationChain msgs) {
-		NodeInstance oldFrom = from;
-		from = newFrom;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CGPPackage.CONNECTION_INSTANCE__FROM, oldFrom, newFrom);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
+		msgs = eBasicSetContainer((InternalEObject)newFrom, CGPPackage.CONNECTION_INSTANCE__FROM, msgs);
 		return msgs;
 	}
 
@@ -140,10 +110,12 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	public void setFrom(NodeInstance newFrom) {
-		if (newFrom != from) {
+		if (newFrom != eInternalContainer() || (eContainerFeatureID() != CGPPackage.CONNECTION_INSTANCE__FROM && newFrom != null)) {
+			if (EcoreUtil.isAncestor(this, newFrom))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
-			if (from != null)
-				msgs = ((InternalEObject)from).eInverseRemove(this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, NodeInstance.class, msgs);
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
 			if (newFrom != null)
 				msgs = ((InternalEObject)newFrom).eInverseAdd(this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, NodeInstance.class, msgs);
 			msgs = basicSetFrom(newFrom, msgs);
@@ -298,8 +270,8 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case CGPPackage.CONNECTION_INSTANCE__FROM:
-				if (from != null)
-					msgs = ((InternalEObject)from).eInverseRemove(this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, NodeInstance.class, msgs);
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetFrom((NodeInstance)otherEnd, msgs);
 			case CGPPackage.CONNECTION_INSTANCE__TO:
 				if (to != null)
@@ -331,11 +303,24 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case CGPPackage.CONNECTION_INSTANCE__FROM:
+				return eInternalContainer().eInverseRemove(this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, NodeInstance.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case CGPPackage.CONNECTION_INSTANCE__FROM:
-				if (resolve) return getFrom();
-				return basicGetFrom();
+				return getFrom();
 			case CGPPackage.CONNECTION_INSTANCE__TO:
 				if (resolve) return getTo();
 				return basicGetTo();
@@ -406,7 +391,7 @@ public class ConnectionInstanceImpl extends MinimalEObjectImpl.Container impleme
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case CGPPackage.CONNECTION_INSTANCE__FROM:
-				return from != null;
+				return getFrom() != null;
 			case CGPPackage.CONNECTION_INSTANCE__TO:
 				return to != null;
 			case CGPPackage.CONNECTION_INSTANCE__PROTOTYPE:

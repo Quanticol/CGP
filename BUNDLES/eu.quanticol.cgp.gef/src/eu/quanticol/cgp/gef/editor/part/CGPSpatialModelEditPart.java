@@ -13,10 +13,15 @@ import org.eclipse.draw2d.LineBorder;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.gef.CompoundSnapToHelper;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.SnapToGeometry;
+import org.eclipse.gef.SnapToGrid;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
-import eu.quanticol.cgp.gef.editor.policy.CGPLocateElementXYLayoutPolicy;
+import eu.quanticol.cgp.gef.editor.policy.CGPLocatedElementXYLayoutPolicy;
 import eu.quanticol.cgp.model.LocatedElement;
 import eu.quanticol.cgp.model.SpatialModel;
 
@@ -50,7 +55,8 @@ public class CGPSpatialModelEditPart extends AbstractGraphicalEditPart {
 	 */
 	@Override
 	protected void createEditPolicies() {
-		installEditPolicy(EditPolicy.LAYOUT_ROLE, new CGPLocateElementXYLayoutPolicy());	
+		installEditPolicy(EditPolicy.LAYOUT_ROLE, new CGPLocatedElementXYLayoutPolicy());
+		installEditPolicy("Snap Feedback", new SnapFeedbackPolicy());
 	}
 
 	@Override public void activate() {
@@ -73,6 +79,24 @@ public class CGPSpatialModelEditPart extends AbstractGraphicalEditPart {
 	    SpatialModel sm = (SpatialModel) getModel();
 	    retVal.addAll(sm.getLocatedElements());
 	    return retVal;
+	}
+	
+	@Override public Object getAdapter(Class key) {
+		 if (key == SnapToHelper.class) {
+		        List<SnapToHelper> helpers = new ArrayList<SnapToHelper>();
+		        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGeometry.PROPERTY_SNAP_ENABLED))) {
+		            helpers.add(new SnapToGeometry(this));
+		        }
+		        if (Boolean.TRUE.equals(getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED))) {
+		            helpers.add(new SnapToGrid(this));
+		        }
+		        if(helpers.size()==0) {
+		            return null;
+		        } else {
+		            return new CompoundSnapToHelper(helpers.toArray(new SnapToHelper[0]));
+		        }
+		    }
+		    return super.getAdapter(key);
 	}
 	
 	public class SpatialModelAdapter implements Adapter {

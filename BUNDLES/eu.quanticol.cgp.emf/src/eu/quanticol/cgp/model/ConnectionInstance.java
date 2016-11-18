@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ConnectionInstance extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' reference.
+	 * Returns the value of the '<em><b>From</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -33,20 +33,20 @@ public interface ConnectionInstance extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' reference.
+	 * @return the value of the '<em>From</em>' container reference.
 	 * @see #setFrom(NodeInstance)
 	 * @see eu.quanticol.cgp.model.CGPPackage#getConnectionInstance_From()
 	 * @see eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections
-	 * @model opposite="outgoingConnections"
+	 * @model opposite="outgoingConnections" transient="false"
 	 * @generated
 	 */
 	NodeInstance getFrom();
 
 	/**
-	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}' reference.
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From</em>' reference.
+	 * @param value the new value of the '<em>From</em>' container reference.
 	 * @see #getFrom()
 	 * @generated
 	 */

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -59,7 +60,7 @@ public class NodeInstanceImpl extends LocatedElementImpl implements NodeInstance
 	protected EList<ConnectionInstance> incomingConnections;
 
 	/**
-	 * The cached value of the '{@link #getOutgoingConnections() <em>Outgoing Connections</em>}' reference list.
+	 * The cached value of the '{@link #getOutgoingConnections() <em>Outgoing Connections</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getOutgoingConnections()
@@ -144,7 +145,7 @@ public class NodeInstanceImpl extends LocatedElementImpl implements NodeInstance
 	 */
 	public EList<ConnectionInstance> getOutgoingConnections() {
 		if (outgoingConnections == null) {
-			outgoingConnections = new EObjectWithInverseResolvingEList<ConnectionInstance>(ConnectionInstance.class, this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, CGPPackage.CONNECTION_INSTANCE__FROM);
+			outgoingConnections = new EObjectContainmentWithInverseEList<ConnectionInstance>(ConnectionInstance.class, this, CGPPackage.NODE_INSTANCE__OUTGOING_CONNECTIONS, CGPPackage.CONNECTION_INSTANCE__FROM);
 		}
 		return outgoingConnections;
 	}

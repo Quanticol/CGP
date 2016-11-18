@@ -32,7 +32,7 @@ public class CGPComponentPrototypeCreateCommand extends Command {
 		  newElement.setModel(null);
 	  }
 	 
-	  public void setDatya(String name , String description) {
+	  public void setData(String name , String description) {
 		  this.name = name;
 		  this.description = description;
 	  }

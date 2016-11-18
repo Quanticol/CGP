@@ -2,6 +2,7 @@
  */
 package eu.quanticol.cgp.model;
 
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -110,6 +111,19 @@ public interface LocatedElement extends EObject {
 	 * @generated NOT
 	 */
 	String getName();
-
+	/**
+	 * <!-- begin-user-doc -->
+	 * Returns the location of the element.
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	Point getLocation();
+	/**
+	 * <!-- begin-user-doc -->
+	 * Sets the location of the element
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	void setLocation(Point location);
 
 } // LocatedElement

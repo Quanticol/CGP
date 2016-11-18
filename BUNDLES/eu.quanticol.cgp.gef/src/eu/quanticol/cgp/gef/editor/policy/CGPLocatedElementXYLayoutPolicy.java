@@ -1,14 +1,18 @@
 package eu.quanticol.cgp.gef.editor.policy;
 
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.XYLayoutEditPolicy;
 import org.eclipse.gef.requests.CreateRequest;
 
+import eu.quanticol.cgp.gef.editor.command.CGPLocatedElementChangeLocationCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPLocatedElementCreateCommand;
 import eu.quanticol.cgp.model.LocatedElement;
 import eu.quanticol.cgp.model.SpatialModel;
 
-public class CGPLocateElementXYLayoutPolicy extends XYLayoutEditPolicy {
+public class CGPLocatedElementXYLayoutPolicy extends XYLayoutEditPolicy {
 
 	@Override
 	protected Command getCreateCommand(CreateRequest request) {
@@ -22,5 +26,14 @@ public class CGPLocateElementXYLayoutPolicy extends XYLayoutEditPolicy {
 		}
 		return toReturn;
 	}
+	
+	
+	  @Override 
+	  protected Command createChangeConstraintCommand(EditPart child, Object constraint) {
+		  CGPLocatedElementChangeLocationCommand command = new CGPLocatedElementChangeLocationCommand();
+		    command.setModel((LocatedElement) child.getModel());
+		    command.setNewLocation((Rectangle) constraint);
+		    return command;
+		  }
 
 }

@@ -4,6 +4,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartFactory;
 
 import eu.quanticol.cgp.model.ComponentInstance;
+import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
 import eu.quanticol.cgp.model.SpatialModel;
 
@@ -19,7 +20,10 @@ public class CGPEditorPartFactory implements EditPartFactory {
 	    	part = new CGPNodeInstanceEditPart();
 	    } else if (model instanceof ComponentInstance) {
 	    	part = new CGPComponentInstanceEditPart();
+	    } else if(model instanceof ConnectionInstance){
+	    	part = new CGPConnectionEditPart();
 	    }
+	    
 	     
 	    if (part != null) {
 	      part.setModel(model);

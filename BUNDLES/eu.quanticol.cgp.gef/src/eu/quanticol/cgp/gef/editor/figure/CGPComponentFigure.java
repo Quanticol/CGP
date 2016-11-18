@@ -11,6 +11,7 @@ import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * @author loreti
@@ -47,5 +48,11 @@ public class CGPComponentFigure extends Figure implements CGPFigure {
 		      connectionAnchor = new ChopboxAnchor(this);
 		}
 		return connectionAnchor;
+	}
+
+	@Override
+	public void setColour(Color colour) {
+		this.rectangle.setForegroundColor(colour);
+		this.rectangle.setBackgroundColor(colour);
 	}
 }

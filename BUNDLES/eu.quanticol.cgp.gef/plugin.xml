@@ -5,7 +5,8 @@
          point="org.eclipse.ui.editors">
       <editor
             class="eu.quanticol.cgp.gef.editor.CGPGraphicalEditor"
-            default="false"
+            contributorClass="eu.quanticol.cgp.gef.contributors.CGPEditorActionBarContributor"
+            default="true"
             extensions="cgp"
             id="eu.quanticol.cgp.gef.editorID"
             name="CGP Graphical Editor">

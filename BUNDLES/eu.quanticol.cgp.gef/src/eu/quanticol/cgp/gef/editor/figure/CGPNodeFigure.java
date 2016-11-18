@@ -13,6 +13,7 @@ import org.eclipse.draw2d.ScalablePolygonShape;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.swt.graphics.Color;
 
 /**
  * @author loreti
@@ -63,5 +64,11 @@ public class CGPNodeFigure extends Figure implements CGPFigure {
 			connectionAnchor = new EllipseAnchor(this);
 	    }
 		return connectionAnchor;
+	}
+
+	@Override
+	public void setColour(Color colour) {
+		this.figure.setBackgroundColor(colour);
+		this.figure.setForegroundColor(colour);
 	}
 }
