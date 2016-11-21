@@ -29,8 +29,11 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.PartInitException;
 
 import org.eclipse.ui.IFileEditorInput;
+import org.eclipse.ui.IPartListener2;
 
+import eu.quanticol.cgp.gef.SpatialModelPrototypesView;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeCreateCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeDeleteCommand;
 import eu.quanticol.cgp.gef.editor.part.CGPEditorPartFactory;
 import eu.quanticol.cgp.gef.utils.CGPModelUtils;
 import eu.quanticol.cgp.model.CGPFactory;
@@ -49,6 +52,7 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	private Resource cgpResource;
 	private SpatialModel cgp;
 	private CGPGraphicalEditorPalette palette;
+	private SpatialModelPrototypesView prototypesView;
 
 	public CGPGraphicalEditor() {
 		setEditDomain(new DefaultEditDomain(this));
@@ -82,6 +86,14 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 		fillPalette();
 	}
 
+	private void refreshPrototypesView() {
+		if (this.prototypesView == null) {
+			return;
+		}
+		prototypesView.refresh();
+
+	}
+
 	private void clearPalette() {
 		palette.clear();
 	}
@@ -103,6 +115,7 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 				Object o = notification.getFeature();
 				System.out.println("CLASS: " + o.getClass() + " INST: " + o.toString());
 				refreshPalette();
+				refreshPrototypesView();
 			}
 
 			@Override
@@ -123,8 +136,8 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	protected void configureGraphicalViewer() {
 		super.configureGraphicalViewer();
 		getGraphicalViewer().setEditPartFactory(new CGPEditorPartFactory());
-		getActionRegistry().registerAction(new ToggleGridAction(getGraphicalViewer())); 
-	    getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));        
+		getActionRegistry().registerAction(new ToggleGridAction(getGraphicalViewer()));
+		getActionRegistry().registerAction(new ToggleSnapToGeometryAction(getGraphicalViewer()));
 
 	}
 
@@ -175,19 +188,30 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 		firePropertyChange(PROP_DIRTY);
 		super.commandStackChanged(event);
 	}
-	
+
 	public SpatialModel getModel() {
 		return cgp;
 	}
 
-	
-	
-	
 	public void createComponentPrototype(Command command) {
 		CommandStack cs = getCommandStack();
-		
+
 		if (cs != null) {
 			cs.execute(command);
 		}
+	}
+
+	public void setView(SpatialModelPrototypesView prototypesView) {
+		this.prototypesView = prototypesView;
+
+	}
+
+	public void deleteComponentPrototype(CGPComponentPrototypeDeleteCommand command) {
+		CommandStack cs = getCommandStack();
+
+		if (cs != null) {
+			cs.execute(command);
+		}
+
 	}
 }
