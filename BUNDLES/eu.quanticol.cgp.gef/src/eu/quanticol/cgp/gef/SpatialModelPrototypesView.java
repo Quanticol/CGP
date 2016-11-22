@@ -1,5 +1,6 @@
 package eu.quanticol.cgp.gef;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
@@ -50,9 +51,8 @@ import eu.quanticol.cgp.model.SpatialModel;
  */
 public class SpatialModelPrototypesView extends ViewPart {
 
-
 	private IPartListener2 partListener;
-	
+
 	/**
 	 * The EMF model associated with the active editor.
 	 */
@@ -70,16 +70,20 @@ public class SpatialModelPrototypesView extends ViewPart {
 
 	private Table componentsListTable;
 
+	private Button addNew;
+
 	public SpatialModelPrototypesView() {
 		IWorkbench workbench = PlatformUI.getWorkbench();
 		IWorkbenchWindow window = workbench.getActiveWorkbenchWindow();
 		final IWorkbenchPage page = window.getActivePage();
 		this.partListener = new EditorContentChangedPartListener(this);
 		page.addPartListener(partListener);
+		
 	}
 
 	public void setEditor(CGPGraphicalEditor editor) {
 		this.editor = editor;
+		refresh();
 	}
 
 	@Override
@@ -92,16 +96,13 @@ public class SpatialModelPrototypesView extends ViewPart {
 		setupContainer(parent);
 		setupTabFolder();
 
-		
-		
 		componentsScrolledComposite = createScrolledComposite(categoriesCTabFolder, componentsCTabItem, white);
 		pathsScrolledComposite = createScrolledComposite(categoriesCTabFolder, pathsCTabItem, white);
 		categoriesCTabFolder.setSelection(componentsCTabItem);
 		Composite componentsContainerComposite = new Composite(componentsScrolledComposite, SWT.NONE);
 		componentsContainerComposite.setLayout(new FillLayout());
 		componentsScrolledComposite.setContent(componentsContainerComposite);
-		
-		
+
 		//
 		componentsContainerComposite.setBackground(white);
 		Group componentTableGroup = new Group(componentsContainerComposite, SWT.NONE);
@@ -115,7 +116,6 @@ public class SpatialModelPrototypesView extends ViewPart {
 		componentBehaviourGroup.setSize(200, 500);
 		componentBehaviourGroup.setText("<Component_name> behaviour");
 		componentBehaviourGroup.setBackground(white);
-		
 
 		ExpandBar behaviourExpandBar = new ExpandBar(componentBehaviourGroup, SWT.V_SCROLL);
 		ExpandItem statesExpandItem = new ExpandItem(behaviourExpandBar, SWT.NONE, 0);
@@ -135,7 +135,7 @@ public class SpatialModelPrototypesView extends ViewPart {
 		statesNameColumn.setText("Name");
 
 		TableItem state1 = new TableItem(statesListTable, SWT.NONE);
-		state1.setText(new String[] {"S"});
+		state1.setText(new String[] { "S" });
 
 		Button makeInit = new Button(statesComposite, SWT.NONE);
 		makeInit.setText("Init");
@@ -143,8 +143,7 @@ public class SpatialModelPrototypesView extends ViewPart {
 		Button removeState = new Button(statesComposite, SWT.NONE);
 		removeState.setText("Remove");
 		removeState.setSize(200, 50);
-		
-		
+
 		Group labelledNewStateName = new Group(statesComposite, SWT.NONE);
 		labelledNewStateName.setLayout(new FillLayout());
 		Label newStateNameLabel = new Label(labelledNewStateName, SWT.NONE);
@@ -164,7 +163,7 @@ public class SpatialModelPrototypesView extends ViewPart {
 		checkboxPath1.setText("Slow lane");
 		Button checkboxPath2 = new Button(statesAllowedPathsGroup, SWT.CHECK);
 		checkboxPath2.setText("Fast lane");
-		
+
 		ExpandItem otherBehaviourExpandItem = new ExpandItem(behaviourExpandBar, SWT.NONE, 1);
 		otherBehaviourExpandItem.setText("Custom behaviour");
 		// item0.setHeight(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT).y);
@@ -173,26 +172,23 @@ public class SpatialModelPrototypesView extends ViewPart {
 		// item0.setImage(image);
 
 		setupComponentsTable(componentTableGroup);
-
 		
-
-		TableItem item1 = new TableItem(componentsListTable, SWT.NONE);
-		item1.setText(new String[] { "Bus", "A bus prototype" });
 
 		Button removeSelected = new Button(componentTableGroup, SWT.NONE);
 		removeSelected.setText("Remove selected");
 		removeSelected.addSelectionListener(new RemoveComponentListener(this));
 
-		Button addNew = new Button(componentTableGroup, SWT.NONE);
+		addNew = new Button(componentTableGroup, SWT.NONE);
 		addNew.setText("Add new");
-		
+
 		Group labelledTextName = new Group(componentTableGroup, SWT.NONE);
 		labelledTextName.setLayout(new FillLayout());
 		Label newComponentNameLabel = new Label(labelledTextName, SWT.NONE);
 		newComponentNameLabel.setText("Name");
 		newComponentNameLabel.setSize(100, SWT.DEFAULT);
 		newComponentName = new Text(labelledTextName, SWT.NONE);
-	//	newComponentName.addModifyListener(new ComponentNameTextModifyListener(newComponentName, editor, addNew));
+		ComponentNameTextModifyListener modifyListenerForRefreshingAddNewComponentButton =new ComponentNameTextModifyListener(this);
+		newComponentName.addModifyListener(modifyListenerForRefreshingAddNewComponentButton);
 
 		Group labelledTextDescription = new Group(componentTableGroup, SWT.NONE);
 		labelledTextDescription.setLayout(new FillLayout());
@@ -200,7 +196,9 @@ public class SpatialModelPrototypesView extends ViewPart {
 		newComponentDescriptionLabel.setText("Description");
 		newComponentDescriptionLabel.setSize(100, SWT.DEFAULT);
 		newComponentDescription = new Text(labelledTextDescription, SWT.NONE);
-
+		newComponentDescription.addModifyListener(modifyListenerForRefreshingAddNewComponentButton);
+		
+		
 		Group labelledMenuShapeGroup = new Group(componentTableGroup, SWT.NONE);
 		labelledMenuShapeGroup.setLayout(new FillLayout());
 		Label newComponentShapeLabel = new Label(labelledMenuShapeGroup, SWT.NONE);
@@ -211,8 +209,7 @@ public class SpatialModelPrototypesView extends ViewPart {
 		newComponentShapeCombo.add("circle");
 		newComponentShapeCombo.add("triangle");
 		newComponentShapeCombo.select(0);
-		
-		
+
 		Group labelledMenuColourGroup = new Group(componentTableGroup, SWT.NONE);
 		labelledMenuColourGroup.setLayout(new FillLayout());
 		Label newComponentColourLabel = new Label(labelledMenuColourGroup, SWT.NONE);
@@ -223,11 +220,10 @@ public class SpatialModelPrototypesView extends ViewPart {
 		newComponentColourCombo.add("green");
 		newComponentColourCombo.add("blue");
 		newComponentColourCombo.select(0);
-		
-		
+
 		String name = newComponentName.getText();
 		String description = newComponentDescription.getText();
-		
+
 		String shape = newComponentShapeCombo.getItem(newComponentShapeCombo.getSelectionIndex());
 		String colour = newComponentColourCombo.getItem(newComponentColourCombo.getSelectionIndex());
 		addNew.addSelectionListener(new AddNewComponentPrototypeListener(this));
@@ -329,14 +325,14 @@ public class SpatialModelPrototypesView extends ViewPart {
 	}
 
 	private void refreshElements() {
-		//this.label.setText("Model selected!");
+		// this.label.setText("Model selected!");
 
 	}
 
 	public void createComponentPrototype() {
 
 		CGPComponentPrototypeCreateCommand command = new CGPComponentPrototypeCreateCommand();
-		command.setComponentPrototype( CGPFactory.eINSTANCE.createComponentPrototype() );
+		command.setComponentPrototype(CGPFactory.eINSTANCE.createComponentPrototype());
 		command.setData(newComponentName.getText(), newComponentDescription.getText());
 		command.setParent(this.selectedModel);
 		editor.createComponentPrototype(command);
@@ -344,21 +340,37 @@ public class SpatialModelPrototypesView extends ViewPart {
 
 	public void removeComponentPrototype() {
 		CGPComponentPrototypeDeleteCommand command = new CGPComponentPrototypeDeleteCommand();
-		ComponentPrototype toBeDeleted = null;
-		for(ComponentPrototype cp : this.getEditor().getModel().getComponentPrototypes()){
-			if(cp.getName() == null){}
-			else if (cp.getName().equals(this.componentsListTable.getItem(this.componentsListTable.getSelectionIndex()).getText())){
-				toBeDeleted = cp;
+		List<ComponentPrototype> toBeDeleted = new ArrayList<>();
+
+		// int selectionCount = this.componentsListTable.getSelectionCount();
+		List<String> selectedComponentNames = new ArrayList<>();
+		int[] selectedIndices = this.componentsListTable.getSelectionIndices();
+
+		for (int id : selectedIndices) {
+
+			String selected = this.componentsListTable.getItem(id).getText();
+			selectedComponentNames.add(selected);
+		}
+
+		for (ComponentPrototype cp : this.getEditor().getModel().getComponentPrototypes()) {
+			for (String selectedName : selectedComponentNames) {
+				if (cp.getName() != null && cp.getName().equals(selectedName)) {
+					toBeDeleted.add(cp);
+				}
+
 			}
 		}
-		if(toBeDeleted == null){
+		if (toBeDeleted.isEmpty()) {
 			return;
+		} else {
+			for (ComponentPrototype cp : toBeDeleted) {
+				command.setLocatedElement(cp);
+				editor.deleteComponentPrototype(command);
+			}
 		}
-		command.setLocatedElement(toBeDeleted);
-		editor.deleteComponentPrototype(command);
-		
+
 	}
-	
+
 	@Override
 	public void setFocus() {
 		// TODO Auto-generated method stub
@@ -366,28 +378,61 @@ public class SpatialModelPrototypesView extends ViewPart {
 	}
 
 	public CGPGraphicalEditor getEditor() {
-		
+
 		return this.editor;
 	}
 
 	public void refresh() {
-		refreshComponentTable();		
+		refreshComponentTable();
+		refreshAddComponentButton();
 	}
 
+	public boolean validateAddComponentContent(){
+		boolean result = true;
+		if(this.newComponentName == null || this.newComponentDescription == null
+				|| this.newComponentName.getText().equals("") || this.newComponentDescription.getText().equals("")){
+			
+			
+			
+			return false;
+		}
+			
+		List<ComponentPrototype> existingComponents = this.selectedModel.getComponentPrototypes();
+		
+		for(ComponentPrototype cp : existingComponents){
+			if(cp.getName() == null){
+				continue;
+			}
+			if(cp.getName().equals(this.newComponentName.getText())){
+				
+				result = false;
+			}
+		}
+		
+		return result;
+	}
+	
+	public void refreshAddComponentButton(){
+
+		if(validateAddComponentContent()){
+			this.addNew.setEnabled(true);
+		}
+		else{
+			this.addNew.setEnabled(false);
+		}
+	}
+	
 	private void refreshComponentTable() {
 		SpatialModel sm = this.editor.getModel();
 		List<ComponentPrototype> prototypes = sm.getComponentPrototypes();
 		componentsListTable.removeAll();
-		
-		for(ComponentPrototype prototype : prototypes){
+
+		for (ComponentPrototype prototype : prototypes) {
 			TableItem item = new TableItem(componentsListTable, SWT.NONE);
 			item.setText(new String[] { prototype.getName(), prototype.getDescription() });
 		}
 		componentsListTable.redraw();
-		
-		
-	}
 
-	
+	}
 
 }

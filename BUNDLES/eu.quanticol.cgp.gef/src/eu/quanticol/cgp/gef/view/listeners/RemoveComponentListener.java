@@ -17,7 +17,7 @@ public class RemoveComponentListener implements SelectionListener {
 	@Override
 	public void widgetSelected(SelectionEvent e) {
 		view.removeComponentPrototype();
-
+		view.refreshAddComponentButton();
 	}
 
 	@Override
