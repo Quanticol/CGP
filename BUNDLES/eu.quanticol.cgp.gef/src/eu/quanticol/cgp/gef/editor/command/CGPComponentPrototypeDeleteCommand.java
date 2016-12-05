@@ -20,8 +20,7 @@ public class CGPComponentPrototypeDeleteCommand extends Command{
 		/*
 		* In EMF, a model instance that is disconnected from all of the model’s
 		*  resource is not saved and therefore will get deleted
-		*/
-		
+		*/	
 		
 		for (LocatedElement le : spatialModel.getLocatedElements()){
 			if(le instanceof ComponentInstance){
@@ -48,7 +47,7 @@ public class CGPComponentPrototypeDeleteCommand extends Command{
 		}
 	}
 
-	public void setLocatedElement(ComponentPrototype componentPrototype) {
+	public void setComponentPrototype(ComponentPrototype componentPrototype) {
 		this.componentPrototype = componentPrototype;
 		this.spatialModel = componentPrototype.getModel();
 	}

@@ -6,7 +6,7 @@ import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
 import eu.quanticol.cgp.model.SpatialModel;
 
-public class CGPConnectionCreateCommand extends Command {
+public class CGPConnectionInstanceCreateCommand extends Command {
 
 	private NodeInstance source;
 	private NodeInstance target;

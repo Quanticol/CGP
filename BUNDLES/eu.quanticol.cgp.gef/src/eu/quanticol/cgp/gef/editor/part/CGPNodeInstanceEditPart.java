@@ -10,8 +10,11 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
 
 import eu.quanticol.cgp.gef.editor.figure.CGPNodeFigure;
+import eu.quanticol.cgp.gef.editor.policy.CGPLocatedElementEditPolicy;
+import eu.quanticol.cgp.gef.editor.policy.CGPNodeInstanceEditPolicy;
 import eu.quanticol.cgp.gef.editor.policy.NodeInstanceGraphicalNodeEditPolicy;
 import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
@@ -25,7 +28,8 @@ public class CGPNodeInstanceEditPart extends CGPLocatedElementEditPart implement
 
 	@Override
 	protected void createEditPolicies() {
-		super.createEditPolicies();
+		installEditPolicy("Snap Feedback", new SnapFeedbackPolicy());
+		installEditPolicy(EditPolicy.COMPONENT_ROLE, new CGPNodeInstanceEditPolicy());
 		installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new NodeInstanceGraphicalNodeEditPolicy());
 	}
 

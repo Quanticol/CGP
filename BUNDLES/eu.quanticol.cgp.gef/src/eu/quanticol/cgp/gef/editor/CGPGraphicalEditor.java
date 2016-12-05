@@ -34,6 +34,10 @@ import org.eclipse.ui.IPartListener2;
 import eu.quanticol.cgp.gef.SpatialModelPrototypesView;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeCreateCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeDeleteCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPConnectionPrototypeCreateCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPConnectionPrototypeDeleteCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPNodePrototypeCreateCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPNodePrototypeDeleteCommand;
 import eu.quanticol.cgp.gef.editor.part.CGPEditorPartFactory;
 import eu.quanticol.cgp.gef.utils.CGPModelUtils;
 import eu.quanticol.cgp.model.CGPFactory;
@@ -194,11 +198,7 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	}
 
 	public void createComponentPrototype(Command command) {
-		CommandStack cs = getCommandStack();
-
-		if (cs != null) {
-			cs.execute(command);
-		}
+		executeCommand(command);
 	}
 
 	public void setView(SpatialModelPrototypesView prototypesView) {
@@ -206,12 +206,33 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 
 	}
 
-	public void deleteComponentPrototype(CGPComponentPrototypeDeleteCommand command) {
+	private void executeCommand(Command c){
 		CommandStack cs = getCommandStack();
-
 		if (cs != null) {
-			cs.execute(command);
+			cs.execute(c);
 		}
+	}
+	
+	public void deleteComponentPrototype(CGPComponentPrototypeDeleteCommand command) {
+		executeCommand(command);
+	}
 
+	public void deleteNodePrototype(CGPNodePrototypeDeleteCommand command) {
+		executeCommand(command);
+	}
+
+	public void createNodePrototype(CGPNodePrototypeCreateCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void createConnectionPrototype(CGPConnectionPrototypeCreateCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void deleteConnectionPrototype(CGPConnectionPrototypeDeleteCommand command) {
+		executeCommand(command);
+		
 	}
 }

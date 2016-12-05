@@ -5,7 +5,7 @@ import org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 
-import eu.quanticol.cgp.gef.editor.command.CGPConnectionCreateCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPConnectionInstanceCreateCommand;
 import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
 import eu.quanticol.cgp.model.SpatialModel;
@@ -14,14 +14,14 @@ public class NodeInstanceGraphicalNodeEditPolicy extends GraphicalNodeEditPolicy
 
 	@Override
 	protected Command getConnectionCompleteCommand(CreateConnectionRequest request) {
-		CGPConnectionCreateCommand result = (CGPConnectionCreateCommand) request.getStartCommand();
+		CGPConnectionInstanceCreateCommand result = (CGPConnectionInstanceCreateCommand) request.getStartCommand();
 		result.setTarget((NodeInstance) getHost().getModel());
 		return result;
 	}
 
 	@Override
 	protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
-		CGPConnectionCreateCommand result = new CGPConnectionCreateCommand();
+		CGPConnectionInstanceCreateCommand result = new CGPConnectionInstanceCreateCommand();
 		result.setSource((NodeInstance) getHost().getModel());
 		result.setConnectionInstance((ConnectionInstance) request.getNewObject());
 		result.setSpatialModel(((NodeInstance) getHost().getModel()).getModel());

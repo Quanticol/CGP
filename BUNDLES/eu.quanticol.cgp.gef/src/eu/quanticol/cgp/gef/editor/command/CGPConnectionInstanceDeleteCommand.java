@@ -6,7 +6,7 @@ import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
 import eu.quanticol.cgp.model.SpatialModel;
 
-public class CGPConnectionDeleteCommand extends Command {
+public class CGPConnectionInstanceDeleteCommand extends Command {
 	private ConnectionInstance connectionInstance;
 	private SpatialModel spatialModel;
 	private NodeInstance sourceNodeInstance;
