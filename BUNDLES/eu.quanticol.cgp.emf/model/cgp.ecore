@@ -10,6 +10,8 @@
         eType="#//ConnectionPrototype" containment="true" eOpposite="#//ConnectionPrototype/model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="locatedElements" upperBound="-1"
         eType="#//LocatedElement" containment="true" eOpposite="#//LocatedElement/model"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectionInstances" upperBound="-1"
+        eType="#//ConnectionInstance" containment="true" eOpposite="#//ConnectionInstance/model"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NodePrototype">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -36,7 +38,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="incomingConnections" upperBound="-1"
         eType="#//ConnectionInstance" eOpposite="#//ConnectionInstance/to"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outgoingConnections" upperBound="-1"
-        eType="#//ConnectionInstance" containment="true" eOpposite="#//ConnectionInstance/from"/>
+        eType="#//ConnectionInstance" eOpposite="#//ConnectionInstance/from"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LocatedElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -53,7 +55,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" eType="#//NodeInstance"
         eOpposite="#//NodeInstance/incomingConnections"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="prototype" eType="#//ConnectionPrototype"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//SpatialModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1" eType="#//SpatialModel"
+        eOpposite="#//SpatialModel/connectionInstances"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="State">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -62,5 +65,7 @@
         eType="#//ConnectionPrototype"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
         eType="#//ComponentPrototype"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="allowedNodes" upperBound="-1"
+        eType="#//NodePrototype"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -34,6 +34,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import eu.quanticol.carma.core.CarmaModelToCode;
+import eu.quanticol.carma.core.carma.Model;
 import eu.quanticol.cgp.gef.editor.CGPGraphicalEditor;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeCreateCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeDeleteCommand;
@@ -51,11 +53,13 @@ import eu.quanticol.cgp.gef.view.listeners.NewNodeNameModifyListener;
 import eu.quanticol.cgp.gef.view.listeners.RemoveComponentListener;
 import eu.quanticol.cgp.gef.view.listeners.RemoveConnectionPrototypeSelectionListener;
 import eu.quanticol.cgp.gef.view.listeners.RemoveNodePrototypeSelectionListener;
+import eu.quanticol.cgp.gef.view.listeners.SaveCarmaFileListener;
 import eu.quanticol.cgp.model.CGPFactory;
 import eu.quanticol.cgp.model.ComponentPrototype;
 import eu.quanticol.cgp.model.ConnectionPrototype;
 import eu.quanticol.cgp.model.NodePrototype;
 import eu.quanticol.cgp.model.SpatialModel;
+import eu.quanticol.cgp.model.generator.CarmaCoreToCGPRevised;
 
 /**
  * @author natalia
@@ -77,7 +81,16 @@ public class SpatialModelPrototypesView extends ViewPart {
 	private CTabFolder categoriesCTabFolder;
 	private CTabItem componentsCTabItem;
 	private CTabItem pathsCTabItem;
+	private CTabItem generationCTabItem;
 	/* *** *** *** */
+	
+	 /* *** generation tab elements *** */
+     /* */
+	private ScrolledComposite generationScrolledComposite;
+	private Composite generationContainerComposite;
+	private Button generateCarmaCode;
+	
+	 /* */
 	
     /* *** components tab elements *** */
 	/* */
@@ -126,19 +139,20 @@ public class SpatialModelPrototypesView extends ViewPart {
 	//main paths tab controls
 	private ScrolledComposite pathsScrolledComposite;
 	private Composite pathsContainerComposite;
+	/* */
+	//path nodes controls	
 	private Group nodesTableGroup;
 	private Table nodesListTable;
 	private Button removeNodePrototype;
-	private Group connectionsTableGroup;
-	private Table connectionsListTable;
 	private Button addNewNode;
-	private Button removeConnectionPrototype;
 	private Group labelledNewNodeName;
 	private Label newNodeNameLabel;
 	private Text newNodeName;
 	private Group labelledNewNodeDescription;
 	private Label newNodeDescriptionLabel;
-	private Text newNodeDescription;	
+	private Text newNodeDescription;
+	/* */
+	//path connections controls	
 	private Button addNewConnection;
 	private Group labelledNewConnectionName;
 	private Label newConnectionNameLabel;
@@ -146,6 +160,9 @@ public class SpatialModelPrototypesView extends ViewPart {
 	private Group labelledNewConnectionDescription;
 	private Label newConnectionDescriptionLabel;
 	private Text newConnectionDescription;
+	private Group connectionsTableGroup;
+	private Table connectionsListTable;
+	private Button removeConnectionPrototype;
 	/* *** *** *** */
 
 
@@ -177,6 +194,12 @@ public class SpatialModelPrototypesView extends ViewPart {
 		parent.setLayout(new FillLayout());
 		setupContainer(parent);
 		setupTabFolder();
+		
+		generationScrolledComposite = createScrolledComposite(categoriesCTabFolder, generationCTabItem, white);
+		generationContainerComposite = new Composite(generationScrolledComposite, SWT.NONE);
+		generationContainerComposite.setLayout(new FillLayout());
+		generationScrolledComposite.setContent(generationContainerComposite);
+		generationContainerComposite.setBackground(white);
 		
 		pathsScrolledComposite = createScrolledComposite(categoriesCTabFolder, pathsCTabItem, white);
 		pathsContainerComposite = new Composite(pathsScrolledComposite, SWT.NONE);
@@ -374,6 +397,10 @@ public class SpatialModelPrototypesView extends ViewPart {
 //		String colour = newComponentColourCombo.getItem(newComponentColourCombo.getSelectionIndex());
 		addNewComponent.addSelectionListener(new AddNewComponentPrototypeListener(this));
 
+		generateCarmaCode = new Button(generationContainerComposite, SWT.NONE);
+		generateCarmaCode.setText("Save");
+		
+		generateCarmaCode.addSelectionListener(new SaveCarmaFileListener(this));
 		
 	}
 
@@ -443,6 +470,8 @@ public class SpatialModelPrototypesView extends ViewPart {
 		componentsCTabItem.setText("Components");
 		pathsCTabItem = new CTabItem(categoriesCTabFolder, SWT.NONE, 1);
 		pathsCTabItem.setText("Paths");
+		generationCTabItem =  new CTabItem(categoriesCTabFolder, SWT.NONE, 2);
+		generationCTabItem.setText("Generation");
 	}
 
 	private void setupContainer(Composite parent) {
@@ -780,6 +809,15 @@ public class SpatialModelPrototypesView extends ViewPart {
 				editor.deleteConnectionPrototype(command);
 			}
 		}
+		
+	}
+
+	public void saveCarmaFile() {
+		SpatialModel currentModel = editor.getModel();
+		Model m = CarmaCoreToCGPRevised.spatialModelToModel(currentModel);
+		CarmaModelToCode s = new CarmaModelToCode();
+		String model = (String)(s.modelToCode(m));
+		System.out.println(model);
 		
 	}
 
