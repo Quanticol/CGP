@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link eu.quanticol.cgp.model.State#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.State#getAllowedConnections <em>Allowed Connections</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.State#getComponent <em>Component</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.State#getAllowedNodes <em>Allowed Nodes</em>}</li>
  * </ul>
  *
  * @see eu.quanticol.cgp.model.CGPPackage#getState()
@@ -119,5 +120,21 @@ public interface State extends EObject {
 	 * @generated
 	 */
 	void setComponent(ComponentPrototype value);
+
+	/**
+	 * Returns the value of the '<em><b>Allowed Nodes</b></em>' reference list.
+	 * The list contents are of type {@link eu.quanticol.cgp.model.NodePrototype}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Allowed Nodes</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Allowed Nodes</em>' reference list.
+	 * @see eu.quanticol.cgp.model.CGPPackage#getState_AllowedNodes()
+	 * @model
+	 * @generated
+	 */
+	EList<NodePrototype> getAllowedNodes();
 
 } // State

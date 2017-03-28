@@ -8,9 +8,11 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: eu.quanticol.cgp.model,
+ eu.quanticol.cgp.model.generator,
  eu.quanticol.cgp.model.impl,
  eu.quanticol.cgp.model.util
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport
+ org.eclipse.emf.ecore;visibility:=reexport,
+ eu.quanticol.carma.core
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.draw2d.geometry

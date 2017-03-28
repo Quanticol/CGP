@@ -19,6 +19,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getModel <em>Model</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getStates <em>States</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getInitState <em>Init State</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getColour <em>Colour</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.ComponentPrototype#getShape <em>Shape</em>}</li>
  * </ul>
  *
  * @see eu.quanticol.cgp.model.CGPPackage#getComponentPrototype()
@@ -121,5 +124,83 @@ public interface ComponentPrototype extends EObject {
 	 * @generated
 	 */
 	EList<State> getStates();
+
+	/**
+	 * Returns the value of the '<em><b>Init State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Init State</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Init State</em>' reference.
+	 * @see #setInitState(State)
+	 * @see eu.quanticol.cgp.model.CGPPackage#getComponentPrototype_InitState()
+	 * @model
+	 * @generated
+	 */
+	State getInitState();
+
+	/**
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ComponentPrototype#getInitState <em>Init State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Init State</em>' reference.
+	 * @see #getInitState()
+	 * @generated
+	 */
+	void setInitState(State value);
+
+	/**
+	 * Returns the value of the '<em><b>Colour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Colour</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Colour</em>' containment reference.
+	 * @see #setColour(Colour)
+	 * @see eu.quanticol.cgp.model.CGPPackage#getComponentPrototype_Colour()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Colour getColour();
+
+	/**
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ComponentPrototype#getColour <em>Colour</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Colour</em>' containment reference.
+	 * @see #getColour()
+	 * @generated
+	 */
+	void setColour(Colour value);
+
+	/**
+	 * Returns the value of the '<em><b>Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Shape</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Shape</em>' containment reference.
+	 * @see #setShape(Shape)
+	 * @see eu.quanticol.cgp.model.CGPPackage#getComponentPrototype_Shape()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Shape getShape();
+
+	/**
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ComponentPrototype#getShape <em>Shape</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Shape</em>' containment reference.
+	 * @see #getShape()
+	 * @generated
+	 */
+	void setShape(Shape value);
 
 } // ComponentPrototype

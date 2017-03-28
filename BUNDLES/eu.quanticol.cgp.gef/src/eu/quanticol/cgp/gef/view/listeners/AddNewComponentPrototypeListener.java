@@ -23,6 +23,7 @@ public class AddNewComponentPrototypeListener implements SelectionListener {
 	public void widgetSelected(SelectionEvent e) {
 		view.createComponentPrototype();
 		view.refreshAddComponentButton();
+		view.refreshBehaviourOfComponentPrototypeWhenSelected();
 	}
 
 	@Override

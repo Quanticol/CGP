@@ -75,7 +75,7 @@ public class CGPCircleFigure extends Figure implements CGPFigure {
    
 	@Override
 	public void setLabel(String label) {
-		this.label.setText(label);
+		this.label.setText("");
 	}
 	
 	public void setColour(Color colour){

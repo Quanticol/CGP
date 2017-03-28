@@ -55,7 +55,7 @@ public class CGPNodeFigure extends Figure implements CGPFigure {
    
 	@Override
 	public void setLabel(String label) {
-		this.label.setText(label);
+		this.label.setText("");
 	}
 
 	@Override

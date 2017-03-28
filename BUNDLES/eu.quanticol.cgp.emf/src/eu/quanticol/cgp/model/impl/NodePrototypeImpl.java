@@ -3,6 +3,7 @@
 package eu.quanticol.cgp.model.impl;
 
 import eu.quanticol.cgp.model.CGPPackage;
+import eu.quanticol.cgp.model.Colour;
 import eu.quanticol.cgp.model.NodePrototype;
 import eu.quanticol.cgp.model.SpatialModel;
 
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *   <li>{@link eu.quanticol.cgp.model.impl.NodePrototypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.NodePrototypeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.NodePrototypeImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.NodePrototypeImpl#getColour <em>Colour</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,6 +74,16 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 	 * @ordered
 	 */
 	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getColour() <em>Colour</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColour()
+	 * @generated
+	 * @ordered
+	 */
+	protected Colour colour;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -180,6 +192,49 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Colour getColour() {
+		return colour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetColour(Colour newColour, NotificationChain msgs) {
+		Colour oldColour = colour;
+		colour = newColour;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CGPPackage.NODE_PROTOTYPE__COLOUR, oldColour, newColour);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColour(Colour newColour) {
+		if (newColour != colour) {
+			NotificationChain msgs = null;
+			if (colour != null)
+				msgs = ((InternalEObject)colour).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CGPPackage.NODE_PROTOTYPE__COLOUR, null, msgs);
+			if (newColour != null)
+				msgs = ((InternalEObject)newColour).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CGPPackage.NODE_PROTOTYPE__COLOUR, null, msgs);
+			msgs = basicSetColour(newColour, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CGPPackage.NODE_PROTOTYPE__COLOUR, newColour, newColour));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -201,6 +256,8 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 		switch (featureID) {
 			case CGPPackage.NODE_PROTOTYPE__MODEL:
 				return basicSetModel(null, msgs);
+			case CGPPackage.NODE_PROTOTYPE__COLOUR:
+				return basicSetColour(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -233,6 +290,8 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 				return getDescription();
 			case CGPPackage.NODE_PROTOTYPE__MODEL:
 				return getModel();
+			case CGPPackage.NODE_PROTOTYPE__COLOUR:
+				return getColour();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,6 +312,9 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 				return;
 			case CGPPackage.NODE_PROTOTYPE__MODEL:
 				setModel((SpatialModel)newValue);
+				return;
+			case CGPPackage.NODE_PROTOTYPE__COLOUR:
+				setColour((Colour)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -275,6 +337,9 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 			case CGPPackage.NODE_PROTOTYPE__MODEL:
 				setModel((SpatialModel)null);
 				return;
+			case CGPPackage.NODE_PROTOTYPE__COLOUR:
+				setColour((Colour)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -293,6 +358,8 @@ public class NodePrototypeImpl extends MinimalEObjectImpl.Container implements N
 				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 			case CGPPackage.NODE_PROTOTYPE__MODEL:
 				return getModel() != null;
+			case CGPPackage.NODE_PROTOTYPE__COLOUR:
+				return colour != null;
 		}
 		return super.eIsSet(featureID);
 	}

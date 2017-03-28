@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link eu.quanticol.cgp.model.NodePrototype#getName <em>Name</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.NodePrototype#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.NodePrototype#getModel <em>Model</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.NodePrototype#getColour <em>Colour</em>}</li>
  * </ul>
  *
  * @see eu.quanticol.cgp.model.CGPPackage#getNodePrototype()
@@ -102,5 +103,31 @@ public interface NodePrototype extends EObject {
 	 * @generated
 	 */
 	void setModel(SpatialModel value);
+
+	/**
+	 * Returns the value of the '<em><b>Colour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Colour</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Colour</em>' containment reference.
+	 * @see #setColour(Colour)
+	 * @see eu.quanticol.cgp.model.CGPPackage#getNodePrototype_Colour()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	Colour getColour();
+
+	/**
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.NodePrototype#getColour <em>Colour</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Colour</em>' containment reference.
+	 * @see #getColour()
+	 * @generated
+	 */
+	void setColour(Colour value);
 
 } // NodePrototype

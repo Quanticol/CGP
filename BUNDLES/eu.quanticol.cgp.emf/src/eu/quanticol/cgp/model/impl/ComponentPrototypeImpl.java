@@ -3,7 +3,9 @@
 package eu.quanticol.cgp.model.impl;
 
 import eu.quanticol.cgp.model.CGPPackage;
+import eu.quanticol.cgp.model.Colour;
 import eu.quanticol.cgp.model.ComponentPrototype;
+import eu.quanticol.cgp.model.Shape;
 import eu.quanticol.cgp.model.SpatialModel;
 import eu.quanticol.cgp.model.State;
 
@@ -36,6 +38,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getModel <em>Model</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getStates <em>States</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getInitState <em>Init State</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getColour <em>Colour</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl#getShape <em>Shape</em>}</li>
  * </ul>
  *
  * @generated
@@ -90,6 +95,36 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 	 * @ordered
 	 */
 	protected EList<State> states;
+
+	/**
+	 * The cached value of the '{@link #getInitState() <em>Init State</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInitState()
+	 * @generated
+	 * @ordered
+	 */
+	protected State initState;
+
+	/**
+	 * The cached value of the '{@link #getColour() <em>Colour</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getColour()
+	 * @generated
+	 * @ordered
+	 */
+	protected Colour colour;
+
+	/**
+	 * The cached value of the '{@link #getShape() <em>Shape</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getShape()
+	 * @generated
+	 * @ordered
+	 */
+	protected Shape shape;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -210,6 +245,130 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public State getInitState() {
+		if (initState != null && initState.eIsProxy()) {
+			InternalEObject oldInitState = (InternalEObject)initState;
+			initState = (State)eResolveProxy(oldInitState);
+			if (initState != oldInitState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE, oldInitState, initState));
+			}
+		}
+		return initState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public State basicGetInitState() {
+		return initState;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInitState(State newInitState) {
+		State oldInitState = initState;
+		initState = newInitState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE, oldInitState, initState));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Colour getColour() {
+		return colour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetColour(Colour newColour, NotificationChain msgs) {
+		Colour oldColour = colour;
+		colour = newColour;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CGPPackage.COMPONENT_PROTOTYPE__COLOUR, oldColour, newColour);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setColour(Colour newColour) {
+		if (newColour != colour) {
+			NotificationChain msgs = null;
+			if (colour != null)
+				msgs = ((InternalEObject)colour).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CGPPackage.COMPONENT_PROTOTYPE__COLOUR, null, msgs);
+			if (newColour != null)
+				msgs = ((InternalEObject)newColour).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CGPPackage.COMPONENT_PROTOTYPE__COLOUR, null, msgs);
+			msgs = basicSetColour(newColour, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CGPPackage.COMPONENT_PROTOTYPE__COLOUR, newColour, newColour));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Shape getShape() {
+		return shape;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetShape(Shape newShape, NotificationChain msgs) {
+		Shape oldShape = shape;
+		shape = newShape;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CGPPackage.COMPONENT_PROTOTYPE__SHAPE, oldShape, newShape);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setShape(Shape newShape) {
+		if (newShape != shape) {
+			NotificationChain msgs = null;
+			if (shape != null)
+				msgs = ((InternalEObject)shape).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CGPPackage.COMPONENT_PROTOTYPE__SHAPE, null, msgs);
+			if (newShape != null)
+				msgs = ((InternalEObject)newShape).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CGPPackage.COMPONENT_PROTOTYPE__SHAPE, null, msgs);
+			msgs = basicSetShape(newShape, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CGPPackage.COMPONENT_PROTOTYPE__SHAPE, newShape, newShape));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -233,6 +392,10 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 				return basicSetModel(null, msgs);
 			case CGPPackage.COMPONENT_PROTOTYPE__STATES:
 				return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
+			case CGPPackage.COMPONENT_PROTOTYPE__COLOUR:
+				return basicSetColour(null, msgs);
+			case CGPPackage.COMPONENT_PROTOTYPE__SHAPE:
+				return basicSetShape(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -267,6 +430,13 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 				return getModel();
 			case CGPPackage.COMPONENT_PROTOTYPE__STATES:
 				return getStates();
+			case CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE:
+				if (resolve) return getInitState();
+				return basicGetInitState();
+			case CGPPackage.COMPONENT_PROTOTYPE__COLOUR:
+				return getColour();
+			case CGPPackage.COMPONENT_PROTOTYPE__SHAPE:
+				return getShape();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,6 +463,15 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 				getStates().clear();
 				getStates().addAll((Collection<? extends State>)newValue);
 				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE:
+				setInitState((State)newValue);
+				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__COLOUR:
+				setColour((Colour)newValue);
+				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__SHAPE:
+				setShape((Shape)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -317,6 +496,15 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 			case CGPPackage.COMPONENT_PROTOTYPE__STATES:
 				getStates().clear();
 				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE:
+				setInitState((State)null);
+				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__COLOUR:
+				setColour((Colour)null);
+				return;
+			case CGPPackage.COMPONENT_PROTOTYPE__SHAPE:
+				setShape((Shape)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -337,6 +525,12 @@ public class ComponentPrototypeImpl extends MinimalEObjectImpl.Container impleme
 				return getModel() != null;
 			case CGPPackage.COMPONENT_PROTOTYPE__STATES:
 				return states != null && !states.isEmpty();
+			case CGPPackage.COMPONENT_PROTOTYPE__INIT_STATE:
+				return initState != null;
+			case CGPPackage.COMPONENT_PROTOTYPE__COLOUR:
+				return colour != null;
+			case CGPPackage.COMPONENT_PROTOTYPE__SHAPE:
+				return shape != null;
 		}
 		return super.eIsSet(featureID);
 	}

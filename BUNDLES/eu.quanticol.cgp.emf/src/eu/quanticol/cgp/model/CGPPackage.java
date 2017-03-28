@@ -103,13 +103,22 @@ public interface CGPPackage extends EPackage {
 	int SPATIAL_MODEL__LOCATED_ELEMENTS = 3;
 
 	/**
+	 * The feature id for the '<em><b>Connection Instances</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPATIAL_MODEL__CONNECTION_INSTANCES = 4;
+
+	/**
 	 * The number of structural features of the '<em>Spatial Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SPATIAL_MODEL_FEATURE_COUNT = 4;
+	int SPATIAL_MODEL_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Spatial Model</em>' class.
@@ -158,13 +167,22 @@ public interface CGPPackage extends EPackage {
 	int NODE_PROTOTYPE__MODEL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Colour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE_PROTOTYPE__COLOUR = 3;
+
+	/**
 	 * The number of structural features of the '<em>Node Prototype</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_PROTOTYPE_FEATURE_COUNT = 3;
+	int NODE_PROTOTYPE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Node Prototype</em>' class.
@@ -222,13 +240,40 @@ public interface CGPPackage extends EPackage {
 	int COMPONENT_PROTOTYPE__STATES = 3;
 
 	/**
+	 * The feature id for the '<em><b>Init State</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PROTOTYPE__INIT_STATE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Colour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PROTOTYPE__COLOUR = 5;
+
+	/**
+	 * The feature id for the '<em><b>Shape</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_PROTOTYPE__SHAPE = 6;
+
+	/**
 	 * The number of structural features of the '<em>Component Prototype</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_PROTOTYPE_FEATURE_COUNT = 4;
+	int COMPONENT_PROTOTYPE_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Component Prototype</em>' class.
@@ -277,13 +322,22 @@ public interface CGPPackage extends EPackage {
 	int CONNECTION_PROTOTYPE__MODEL = 2;
 
 	/**
+	 * The feature id for the '<em><b>Colour</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTION_PROTOTYPE__COLOUR = 3;
+
+	/**
 	 * The number of structural features of the '<em>Connection Prototype</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTION_PROTOTYPE_FEATURE_COUNT = 3;
+	int CONNECTION_PROTOTYPE_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Connection Prototype</em>' class.
@@ -405,7 +459,7 @@ public interface CGPPackage extends EPackage {
 	int NODE_INSTANCE__INCOMING_CONNECTIONS = LOCATED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Outgoing Connections</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Outgoing Connections</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -506,7 +560,7 @@ public interface CGPPackage extends EPackage {
 	int CONNECTION_INSTANCE = 7;
 
 	/**
-	 * The feature id for the '<em><b>From</b></em>' container reference.
+	 * The feature id for the '<em><b>From</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -533,7 +587,7 @@ public interface CGPPackage extends EPackage {
 	int CONNECTION_INSTANCE__PROTOTYPE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Model</b></em>' reference.
+	 * The feature id for the '<em><b>Model</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -606,13 +660,22 @@ public interface CGPPackage extends EPackage {
 	int STATE__COMPONENT = 3;
 
 	/**
+	 * The feature id for the '<em><b>Allowed Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STATE__ALLOWED_NODES = 4;
+
+	/**
 	 * The number of structural features of the '<em>State</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int STATE_FEATURE_COUNT = 4;
+	int STATE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>State</em>' class.
@@ -622,6 +685,99 @@ public interface CGPPackage extends EPackage {
 	 * @ordered
 	 */
 	int STATE_OPERATION_COUNT = 0;
+
+
+	/**
+	 * The meta object id for the '{@link eu.quanticol.cgp.model.impl.ColourImpl <em>Colour</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see eu.quanticol.cgp.model.impl.ColourImpl
+	 * @see eu.quanticol.cgp.model.impl.CGPPackageImpl#getColour()
+	 * @generated
+	 */
+	int COLOUR = 9;
+
+	/**
+	 * The feature id for the '<em><b>Red</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLOUR__RED = 0;
+
+	/**
+	 * The feature id for the '<em><b>Green</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLOUR__GREEN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Blue</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLOUR__BLUE = 2;
+
+	/**
+	 * The number of structural features of the '<em>Colour</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLOUR_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Colour</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COLOUR_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link eu.quanticol.cgp.model.impl.ShapeImpl <em>Shape</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see eu.quanticol.cgp.model.impl.ShapeImpl
+	 * @see eu.quanticol.cgp.model.impl.CGPPackageImpl#getShape()
+	 * @generated
+	 */
+	int SHAPE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Shape</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SHAPE_OPERATION_COUNT = 0;
 
 
 	/**
@@ -679,6 +835,17 @@ public interface CGPPackage extends EPackage {
 	EReference getSpatialModel_LocatedElements();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link eu.quanticol.cgp.model.SpatialModel#getConnectionInstances <em>Connection Instances</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Connection Instances</em>'.
+	 * @see eu.quanticol.cgp.model.SpatialModel#getConnectionInstances()
+	 * @see #getSpatialModel()
+	 * @generated
+	 */
+	EReference getSpatialModel_ConnectionInstances();
+
+	/**
 	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.NodePrototype <em>Node Prototype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -720,6 +887,17 @@ public interface CGPPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNodePrototype_Model();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link eu.quanticol.cgp.model.NodePrototype#getColour <em>Colour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Colour</em>'.
+	 * @see eu.quanticol.cgp.model.NodePrototype#getColour()
+	 * @see #getNodePrototype()
+	 * @generated
+	 */
+	EReference getNodePrototype_Colour();
 
 	/**
 	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.ComponentPrototype <em>Component Prototype</em>}'.
@@ -776,6 +954,39 @@ public interface CGPPackage extends EPackage {
 	EReference getComponentPrototype_States();
 
 	/**
+	 * Returns the meta object for the reference '{@link eu.quanticol.cgp.model.ComponentPrototype#getInitState <em>Init State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Init State</em>'.
+	 * @see eu.quanticol.cgp.model.ComponentPrototype#getInitState()
+	 * @see #getComponentPrototype()
+	 * @generated
+	 */
+	EReference getComponentPrototype_InitState();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link eu.quanticol.cgp.model.ComponentPrototype#getColour <em>Colour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Colour</em>'.
+	 * @see eu.quanticol.cgp.model.ComponentPrototype#getColour()
+	 * @see #getComponentPrototype()
+	 * @generated
+	 */
+	EReference getComponentPrototype_Colour();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link eu.quanticol.cgp.model.ComponentPrototype#getShape <em>Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Shape</em>'.
+	 * @see eu.quanticol.cgp.model.ComponentPrototype#getShape()
+	 * @see #getComponentPrototype()
+	 * @generated
+	 */
+	EReference getComponentPrototype_Shape();
+
+	/**
 	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.ConnectionPrototype <em>Connection Prototype</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -819,6 +1030,17 @@ public interface CGPPackage extends EPackage {
 	EReference getConnectionPrototype_Model();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link eu.quanticol.cgp.model.ConnectionPrototype#getColour <em>Colour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Colour</em>'.
+	 * @see eu.quanticol.cgp.model.ConnectionPrototype#getColour()
+	 * @see #getConnectionPrototype()
+	 * @generated
+	 */
+	EReference getConnectionPrototype_Colour();
+
+	/**
 	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.NodeInstance <em>Node Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -851,10 +1073,10 @@ public interface CGPPackage extends EPackage {
 	EReference getNodeInstance_IncomingConnections();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
+	 * Returns the meta object for the reference list '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Outgoing Connections</em>'.
+	 * @return the meta object for the reference list '<em>Outgoing Connections</em>'.
 	 * @see eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections()
 	 * @see #getNodeInstance()
 	 * @generated
@@ -936,10 +1158,10 @@ public interface CGPPackage extends EPackage {
 	EClass getConnectionInstance();
 
 	/**
-	 * Returns the meta object for the container reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}'.
+	 * Returns the meta object for the reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>From</em>'.
+	 * @return the meta object for the reference '<em>From</em>'.
 	 * @see eu.quanticol.cgp.model.ConnectionInstance#getFrom()
 	 * @see #getConnectionInstance()
 	 * @generated
@@ -969,10 +1191,10 @@ public interface CGPPackage extends EPackage {
 	EReference getConnectionInstance_Prototype();
 
 	/**
-	 * Returns the meta object for the reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getModel <em>Model</em>}'.
+	 * Returns the meta object for the container reference '{@link eu.quanticol.cgp.model.ConnectionInstance#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Model</em>'.
+	 * @return the meta object for the container reference '<em>Model</em>'.
 	 * @see eu.quanticol.cgp.model.ConnectionInstance#getModel()
 	 * @see #getConnectionInstance()
 	 * @generated
@@ -1032,6 +1254,81 @@ public interface CGPPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getState_Component();
+
+	/**
+	 * Returns the meta object for the reference list '{@link eu.quanticol.cgp.model.State#getAllowedNodes <em>Allowed Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Allowed Nodes</em>'.
+	 * @see eu.quanticol.cgp.model.State#getAllowedNodes()
+	 * @see #getState()
+	 * @generated
+	 */
+	EReference getState_AllowedNodes();
+
+	/**
+	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.Colour <em>Colour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Colour</em>'.
+	 * @see eu.quanticol.cgp.model.Colour
+	 * @generated
+	 */
+	EClass getColour();
+
+	/**
+	 * Returns the meta object for the attribute '{@link eu.quanticol.cgp.model.Colour#getRed <em>Red</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Red</em>'.
+	 * @see eu.quanticol.cgp.model.Colour#getRed()
+	 * @see #getColour()
+	 * @generated
+	 */
+	EAttribute getColour_Red();
+
+	/**
+	 * Returns the meta object for the attribute '{@link eu.quanticol.cgp.model.Colour#getGreen <em>Green</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Green</em>'.
+	 * @see eu.quanticol.cgp.model.Colour#getGreen()
+	 * @see #getColour()
+	 * @generated
+	 */
+	EAttribute getColour_Green();
+
+	/**
+	 * Returns the meta object for the attribute '{@link eu.quanticol.cgp.model.Colour#getBlue <em>Blue</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Blue</em>'.
+	 * @see eu.quanticol.cgp.model.Colour#getBlue()
+	 * @see #getColour()
+	 * @generated
+	 */
+	EAttribute getColour_Blue();
+
+	/**
+	 * Returns the meta object for class '{@link eu.quanticol.cgp.model.Shape <em>Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Shape</em>'.
+	 * @see eu.quanticol.cgp.model.Shape
+	 * @generated
+	 */
+	EClass getShape();
+
+	/**
+	 * Returns the meta object for the attribute '{@link eu.quanticol.cgp.model.Shape#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see eu.quanticol.cgp.model.Shape#getName()
+	 * @see #getShape()
+	 * @generated
+	 */
+	EAttribute getShape_Name();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1099,6 +1396,14 @@ public interface CGPPackage extends EPackage {
 		EReference SPATIAL_MODEL__LOCATED_ELEMENTS = eINSTANCE.getSpatialModel_LocatedElements();
 
 		/**
+		 * The meta object literal for the '<em><b>Connection Instances</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPATIAL_MODEL__CONNECTION_INSTANCES = eINSTANCE.getSpatialModel_ConnectionInstances();
+
+		/**
 		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.NodePrototypeImpl <em>Node Prototype</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1131,6 +1436,14 @@ public interface CGPPackage extends EPackage {
 		 * @generated
 		 */
 		EReference NODE_PROTOTYPE__MODEL = eINSTANCE.getNodePrototype_Model();
+
+		/**
+		 * The meta object literal for the '<em><b>Colour</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NODE_PROTOTYPE__COLOUR = eINSTANCE.getNodePrototype_Colour();
 
 		/**
 		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.ComponentPrototypeImpl <em>Component Prototype</em>}' class.
@@ -1175,6 +1488,30 @@ public interface CGPPackage extends EPackage {
 		EReference COMPONENT_PROTOTYPE__STATES = eINSTANCE.getComponentPrototype_States();
 
 		/**
+		 * The meta object literal for the '<em><b>Init State</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_PROTOTYPE__INIT_STATE = eINSTANCE.getComponentPrototype_InitState();
+
+		/**
+		 * The meta object literal for the '<em><b>Colour</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_PROTOTYPE__COLOUR = eINSTANCE.getComponentPrototype_Colour();
+
+		/**
+		 * The meta object literal for the '<em><b>Shape</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_PROTOTYPE__SHAPE = eINSTANCE.getComponentPrototype_Shape();
+
+		/**
 		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.ConnectionPrototypeImpl <em>Connection Prototype</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1209,6 +1546,14 @@ public interface CGPPackage extends EPackage {
 		EReference CONNECTION_PROTOTYPE__MODEL = eINSTANCE.getConnectionPrototype_Model();
 
 		/**
+		 * The meta object literal for the '<em><b>Colour</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTION_PROTOTYPE__COLOUR = eINSTANCE.getConnectionPrototype_Colour();
+
+		/**
 		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.NodeInstanceImpl <em>Node Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1235,7 +1580,7 @@ public interface CGPPackage extends EPackage {
 		EReference NODE_INSTANCE__INCOMING_CONNECTIONS = eINSTANCE.getNodeInstance_IncomingConnections();
 
 		/**
-		 * The meta object literal for the '<em><b>Outgoing Connections</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Outgoing Connections</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1305,7 +1650,7 @@ public interface CGPPackage extends EPackage {
 		EClass CONNECTION_INSTANCE = eINSTANCE.getConnectionInstance();
 
 		/**
-		 * The meta object literal for the '<em><b>From</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>From</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1329,7 +1674,7 @@ public interface CGPPackage extends EPackage {
 		EReference CONNECTION_INSTANCE__PROTOTYPE = eINSTANCE.getConnectionInstance_Prototype();
 
 		/**
-		 * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1377,6 +1722,66 @@ public interface CGPPackage extends EPackage {
 		 * @generated
 		 */
 		EReference STATE__COMPONENT = eINSTANCE.getState_Component();
+
+		/**
+		 * The meta object literal for the '<em><b>Allowed Nodes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STATE__ALLOWED_NODES = eINSTANCE.getState_AllowedNodes();
+
+		/**
+		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.ColourImpl <em>Colour</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see eu.quanticol.cgp.model.impl.ColourImpl
+		 * @see eu.quanticol.cgp.model.impl.CGPPackageImpl#getColour()
+		 * @generated
+		 */
+		EClass COLOUR = eINSTANCE.getColour();
+
+		/**
+		 * The meta object literal for the '<em><b>Red</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLOUR__RED = eINSTANCE.getColour_Red();
+
+		/**
+		 * The meta object literal for the '<em><b>Green</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLOUR__GREEN = eINSTANCE.getColour_Green();
+
+		/**
+		 * The meta object literal for the '<em><b>Blue</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COLOUR__BLUE = eINSTANCE.getColour_Blue();
+
+		/**
+		 * The meta object literal for the '{@link eu.quanticol.cgp.model.impl.ShapeImpl <em>Shape</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see eu.quanticol.cgp.model.impl.ShapeImpl
+		 * @see eu.quanticol.cgp.model.impl.CGPPackageImpl#getShape()
+		 * @generated
+		 */
+		EClass SHAPE = eINSTANCE.getShape();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SHAPE__NAME = eINSTANCE.getShape_Name();
 
 	}
 

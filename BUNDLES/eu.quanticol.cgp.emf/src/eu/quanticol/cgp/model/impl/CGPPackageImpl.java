@@ -4,6 +4,7 @@ package eu.quanticol.cgp.model.impl;
 
 import eu.quanticol.cgp.model.CGPFactory;
 import eu.quanticol.cgp.model.CGPPackage;
+import eu.quanticol.cgp.model.Colour;
 import eu.quanticol.cgp.model.ComponentInstance;
 import eu.quanticol.cgp.model.ComponentPrototype;
 import eu.quanticol.cgp.model.ConnectionInstance;
@@ -11,6 +12,7 @@ import eu.quanticol.cgp.model.ConnectionPrototype;
 import eu.quanticol.cgp.model.LocatedElement;
 import eu.quanticol.cgp.model.NodeInstance;
 import eu.quanticol.cgp.model.NodePrototype;
+import eu.quanticol.cgp.model.Shape;
 import eu.quanticol.cgp.model.SpatialModel;
 import eu.quanticol.cgp.model.State;
 
@@ -90,6 +92,20 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 * @generated
 	 */
 	private EClass stateEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass colourEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass shapeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -202,6 +218,15 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getSpatialModel_ConnectionInstances() {
+		return (EReference)spatialModelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNodePrototype() {
 		return nodePrototypeEClass;
 	}
@@ -231,6 +256,15 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 */
 	public EReference getNodePrototype_Model() {
 		return (EReference)nodePrototypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNodePrototype_Colour() {
+		return (EReference)nodePrototypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -283,6 +317,33 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getComponentPrototype_InitState() {
+		return (EReference)componentPrototypeEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPrototype_Colour() {
+		return (EReference)componentPrototypeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getComponentPrototype_Shape() {
+		return (EReference)componentPrototypeEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConnectionPrototype() {
 		return connectionPrototypeEClass;
 	}
@@ -312,6 +373,15 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 */
 	public EReference getConnectionPrototype_Model() {
 		return (EReference)connectionPrototypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getConnectionPrototype_Colour() {
+		return (EReference)connectionPrototypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -499,6 +569,69 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getState_AllowedNodes() {
+		return (EReference)stateEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getColour() {
+		return colourEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getColour_Red() {
+		return (EAttribute)colourEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getColour_Green() {
+		return (EAttribute)colourEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getColour_Blue() {
+		return (EAttribute)colourEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getShape() {
+		return shapeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getShape_Name() {
+		return (EAttribute)shapeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public CGPFactory getCGPFactory() {
 		return (CGPFactory)getEFactoryInstance();
 	}
@@ -527,22 +660,28 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 		createEReference(spatialModelEClass, SPATIAL_MODEL__COMPONENT_PROTOTYPES);
 		createEReference(spatialModelEClass, SPATIAL_MODEL__CONNECTION_PROTOTYPES);
 		createEReference(spatialModelEClass, SPATIAL_MODEL__LOCATED_ELEMENTS);
+		createEReference(spatialModelEClass, SPATIAL_MODEL__CONNECTION_INSTANCES);
 
 		nodePrototypeEClass = createEClass(NODE_PROTOTYPE);
 		createEAttribute(nodePrototypeEClass, NODE_PROTOTYPE__NAME);
 		createEAttribute(nodePrototypeEClass, NODE_PROTOTYPE__DESCRIPTION);
 		createEReference(nodePrototypeEClass, NODE_PROTOTYPE__MODEL);
+		createEReference(nodePrototypeEClass, NODE_PROTOTYPE__COLOUR);
 
 		componentPrototypeEClass = createEClass(COMPONENT_PROTOTYPE);
 		createEAttribute(componentPrototypeEClass, COMPONENT_PROTOTYPE__NAME);
 		createEAttribute(componentPrototypeEClass, COMPONENT_PROTOTYPE__DESCRIPTION);
 		createEReference(componentPrototypeEClass, COMPONENT_PROTOTYPE__MODEL);
 		createEReference(componentPrototypeEClass, COMPONENT_PROTOTYPE__STATES);
+		createEReference(componentPrototypeEClass, COMPONENT_PROTOTYPE__INIT_STATE);
+		createEReference(componentPrototypeEClass, COMPONENT_PROTOTYPE__COLOUR);
+		createEReference(componentPrototypeEClass, COMPONENT_PROTOTYPE__SHAPE);
 
 		connectionPrototypeEClass = createEClass(CONNECTION_PROTOTYPE);
 		createEAttribute(connectionPrototypeEClass, CONNECTION_PROTOTYPE__NAME);
 		createEAttribute(connectionPrototypeEClass, CONNECTION_PROTOTYPE__DESCRIPTION);
 		createEReference(connectionPrototypeEClass, CONNECTION_PROTOTYPE__MODEL);
+		createEReference(connectionPrototypeEClass, CONNECTION_PROTOTYPE__COLOUR);
 
 		nodeInstanceEClass = createEClass(NODE_INSTANCE);
 		createEReference(nodeInstanceEClass, NODE_INSTANCE__PROTOTYPE);
@@ -568,6 +707,15 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 		createEAttribute(stateEClass, STATE__DESCRIPTION);
 		createEReference(stateEClass, STATE__ALLOWED_CONNECTIONS);
 		createEReference(stateEClass, STATE__COMPONENT);
+		createEReference(stateEClass, STATE__ALLOWED_NODES);
+
+		colourEClass = createEClass(COLOUR);
+		createEAttribute(colourEClass, COLOUR__RED);
+		createEAttribute(colourEClass, COLOUR__GREEN);
+		createEAttribute(colourEClass, COLOUR__BLUE);
+
+		shapeEClass = createEClass(SHAPE);
+		createEAttribute(shapeEClass, SHAPE__NAME);
 	}
 
 	/**
@@ -607,27 +755,33 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 		initEReference(getSpatialModel_ComponentPrototypes(), this.getComponentPrototype(), this.getComponentPrototype_Model(), "componentPrototypes", null, 0, -1, SpatialModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpatialModel_ConnectionPrototypes(), this.getConnectionPrototype(), this.getConnectionPrototype_Model(), "connectionPrototypes", null, 0, -1, SpatialModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSpatialModel_LocatedElements(), this.getLocatedElement(), this.getLocatedElement_Model(), "locatedElements", null, 0, -1, SpatialModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpatialModel_ConnectionInstances(), this.getConnectionInstance(), this.getConnectionInstance_Model(), "connectionInstances", null, 0, -1, SpatialModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodePrototypeEClass, NodePrototype.class, "NodePrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNodePrototype_Name(), ecorePackage.getEString(), "name", null, 0, 1, NodePrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getNodePrototype_Description(), ecorePackage.getEString(), "description", null, 0, 1, NodePrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNodePrototype_Model(), this.getSpatialModel(), this.getSpatialModel_NodePrototypes(), "model", null, 1, 1, NodePrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodePrototype_Colour(), this.getColour(), null, "colour", null, 1, 1, NodePrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(componentPrototypeEClass, ComponentPrototype.class, "ComponentPrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getComponentPrototype_Name(), ecorePackage.getEString(), "name", null, 0, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getComponentPrototype_Description(), ecorePackage.getEString(), "description", null, 0, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentPrototype_Model(), this.getSpatialModel(), this.getSpatialModel_ComponentPrototypes(), "model", null, 1, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getComponentPrototype_States(), this.getState(), null, "states", null, 1, -1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentPrototype_InitState(), this.getState(), null, "initState", null, 0, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentPrototype_Colour(), this.getColour(), null, "colour", null, 1, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getComponentPrototype_Shape(), this.getShape(), null, "shape", null, 1, 1, ComponentPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionPrototypeEClass, ConnectionPrototype.class, "ConnectionPrototype", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getConnectionPrototype_Name(), ecorePackage.getEString(), "name", null, 0, 1, ConnectionPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getConnectionPrototype_Description(), ecorePackage.getEString(), "description", null, 0, 1, ConnectionPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionPrototype_Model(), this.getSpatialModel(), this.getSpatialModel_ConnectionPrototypes(), "model", null, 1, 1, ConnectionPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionPrototype_Colour(), this.getColour(), null, "colour", null, 1, 1, ConnectionPrototype.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(nodeInstanceEClass, NodeInstance.class, "NodeInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNodeInstance_Prototype(), this.getNodePrototype(), null, "prototype", null, 0, 1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getNodeInstance_IncomingConnections(), this.getConnectionInstance(), this.getConnectionInstance_To(), "incomingConnections", null, 0, -1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNodeInstance_OutgoingConnections(), this.getConnectionInstance(), this.getConnectionInstance_From(), "outgoingConnections", null, 0, -1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNodeInstance_OutgoingConnections(), this.getConnectionInstance(), this.getConnectionInstance_From(), "outgoingConnections", null, 0, -1, NodeInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(locatedElementEClass, LocatedElement.class, "LocatedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLocatedElement_X(), ecorePackage.getEInt(), "x", null, 0, 1, LocatedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -638,16 +792,25 @@ public class CGPPackageImpl extends EPackageImpl implements CGPPackage {
 		initEReference(getComponentInstance_Prototype(), this.getComponentPrototype(), null, "prototype", null, 0, 1, ComponentInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectionInstanceEClass, ConnectionInstance.class, "ConnectionInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConnectionInstance_From(), this.getNodeInstance(), this.getNodeInstance_OutgoingConnections(), "from", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionInstance_From(), this.getNodeInstance(), this.getNodeInstance_OutgoingConnections(), "from", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionInstance_To(), this.getNodeInstance(), this.getNodeInstance_IncomingConnections(), "to", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConnectionInstance_Prototype(), this.getConnectionPrototype(), null, "prototype", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectionInstance_Model(), this.getSpatialModel(), null, "model", null, 0, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectionInstance_Model(), this.getSpatialModel(), this.getSpatialModel_ConnectionInstances(), "model", null, 1, 1, ConnectionInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(stateEClass, State.class, "State", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getState_Name(), ecorePackage.getEString(), "name", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getState_Description(), ecorePackage.getEString(), "description", null, 0, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_AllowedConnections(), this.getConnectionPrototype(), null, "allowedConnections", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getState_Component(), this.getComponentPrototype(), null, "component", null, 1, 1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getState_AllowedNodes(), this.getNodePrototype(), null, "allowedNodes", null, 0, -1, State.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(colourEClass, Colour.class, "Colour", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getColour_Red(), ecorePackage.getEInt(), "red", "0", 1, 1, Colour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColour_Green(), ecorePackage.getEInt(), "green", "0", 1, 1, Colour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getColour_Blue(), ecorePackage.getEInt(), "blue", "0", 1, 1, Colour.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(shapeEClass, Shape.class, "Shape", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getShape_Name(), ecorePackage.getEString(), "name", "\"circle\"", 1, 1, Shape.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

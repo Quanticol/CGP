@@ -11,19 +11,35 @@ import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.editpolicies.SnapFeedbackPolicy;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Device;
+import org.eclipse.swt.widgets.Display;
 
+import eu.quanticol.cgp.gef.LooksCatalog;
+import eu.quanticol.cgp.gef.editor.figure.CGPCircleFigure;
+import eu.quanticol.cgp.gef.editor.figure.CGPFigure;
 import eu.quanticol.cgp.gef.editor.figure.CGPNodeFigure;
 import eu.quanticol.cgp.gef.editor.policy.CGPLocatedElementEditPolicy;
 import eu.quanticol.cgp.gef.editor.policy.CGPNodeInstanceEditPolicy;
 import eu.quanticol.cgp.gef.editor.policy.NodeInstanceGraphicalNodeEditPolicy;
+import eu.quanticol.cgp.model.Colour;
 import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.NodeInstance;
 
 public class CGPNodeInstanceEditPart extends CGPLocatedElementEditPart implements NodeEditPart {
 	
+	private Color colourToColor(Colour colour){
+		Device display = Display.getCurrent();
+		return new Color(display, colour.getRed(),colour.getGreen(),colour.getBlue() );
+	}
+
+
 	@Override
 	protected IFigure createFigure() {
-		return new CGPNodeFigure();
+		CGPFigure figure = new CGPNodeFigure();
+		NodeInstance model = (NodeInstance)getModel();
+		figure.setColour(colourToColor(model.getPrototype().getColour()));
+		return figure;
 	}
 
 	@Override

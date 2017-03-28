@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ConnectionInstance extends EObject {
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' container reference.
+	 * Returns the value of the '<em><b>From</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections <em>Outgoing Connections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -33,20 +33,20 @@ public interface ConnectionInstance extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' container reference.
+	 * @return the value of the '<em>From</em>' reference.
 	 * @see #setFrom(NodeInstance)
 	 * @see eu.quanticol.cgp.model.CGPPackage#getConnectionInstance_From()
 	 * @see eu.quanticol.cgp.model.NodeInstance#getOutgoingConnections
-	 * @model opposite="outgoingConnections" transient="false"
+	 * @model opposite="outgoingConnections"
 	 * @generated
 	 */
 	NodeInstance getFrom();
 
 	/**
-	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}' container reference.
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getFrom <em>From</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From</em>' container reference.
+	 * @param value the new value of the '<em>From</em>' reference.
 	 * @see #getFrom()
 	 * @generated
 	 */
@@ -107,26 +107,28 @@ public interface ConnectionInstance extends EObject {
 	void setPrototype(ConnectionPrototype value);
 
 	/**
-	 * Returns the value of the '<em><b>Model</b></em>' reference.
+	 * Returns the value of the '<em><b>Model</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link eu.quanticol.cgp.model.SpatialModel#getConnectionInstances <em>Connection Instances</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Model</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Model</em>' reference.
+	 * @return the value of the '<em>Model</em>' container reference.
 	 * @see #setModel(SpatialModel)
 	 * @see eu.quanticol.cgp.model.CGPPackage#getConnectionInstance_Model()
-	 * @model
+	 * @see eu.quanticol.cgp.model.SpatialModel#getConnectionInstances
+	 * @model opposite="connectionInstances" required="true" transient="false"
 	 * @generated
 	 */
 	SpatialModel getModel();
 
 	/**
-	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getModel <em>Model</em>}' reference.
+	 * Sets the value of the '{@link eu.quanticol.cgp.model.ConnectionInstance#getModel <em>Model</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Model</em>' reference.
+	 * @param value the new value of the '<em>Model</em>' container reference.
 	 * @see #getModel()
 	 * @generated
 	 */

@@ -4,6 +4,7 @@ package eu.quanticol.cgp.model.impl;
 
 import eu.quanticol.cgp.model.CGPPackage;
 import eu.quanticol.cgp.model.ComponentPrototype;
+import eu.quanticol.cgp.model.ConnectionInstance;
 import eu.quanticol.cgp.model.ConnectionPrototype;
 import eu.quanticol.cgp.model.LocatedElement;
 import eu.quanticol.cgp.model.NodePrototype;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link eu.quanticol.cgp.model.impl.SpatialModelImpl#getComponentPrototypes <em>Component Prototypes</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.SpatialModelImpl#getConnectionPrototypes <em>Connection Prototypes</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.SpatialModelImpl#getLocatedElements <em>Located Elements</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.SpatialModelImpl#getConnectionInstances <em>Connection Instances</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +81,16 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 	 * @ordered
 	 */
 	protected EList<LocatedElement> locatedElements;
+
+	/**
+	 * The cached value of the '{@link #getConnectionInstances() <em>Connection Instances</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getConnectionInstances()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<ConnectionInstance> connectionInstances;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -152,6 +164,18 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<ConnectionInstance> getConnectionInstances() {
+		if (connectionInstances == null) {
+			connectionInstances = new EObjectContainmentWithInverseEList<ConnectionInstance>(ConnectionInstance.class, this, CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES, CGPPackage.CONNECTION_INSTANCE__MODEL);
+		}
+		return connectionInstances;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -164,6 +188,8 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnectionPrototypes()).basicAdd(otherEnd, msgs);
 			case CGPPackage.SPATIAL_MODEL__LOCATED_ELEMENTS:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getLocatedElements()).basicAdd(otherEnd, msgs);
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getConnectionInstances()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -184,6 +210,8 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 				return ((InternalEList<?>)getConnectionPrototypes()).basicRemove(otherEnd, msgs);
 			case CGPPackage.SPATIAL_MODEL__LOCATED_ELEMENTS:
 				return ((InternalEList<?>)getLocatedElements()).basicRemove(otherEnd, msgs);
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				return ((InternalEList<?>)getConnectionInstances()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -204,6 +232,8 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 				return getConnectionPrototypes();
 			case CGPPackage.SPATIAL_MODEL__LOCATED_ELEMENTS:
 				return getLocatedElements();
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				return getConnectionInstances();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -233,6 +263,10 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 				getLocatedElements().clear();
 				getLocatedElements().addAll((Collection<? extends LocatedElement>)newValue);
 				return;
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				getConnectionInstances().clear();
+				getConnectionInstances().addAll((Collection<? extends ConnectionInstance>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -257,6 +291,9 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 			case CGPPackage.SPATIAL_MODEL__LOCATED_ELEMENTS:
 				getLocatedElements().clear();
 				return;
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				getConnectionInstances().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -277,6 +314,8 @@ public class SpatialModelImpl extends MinimalEObjectImpl.Container implements Sp
 				return connectionPrototypes != null && !connectionPrototypes.isEmpty();
 			case CGPPackage.SPATIAL_MODEL__LOCATED_ELEMENTS:
 				return locatedElements != null && !locatedElements.isEmpty();
+			case CGPPackage.SPATIAL_MODEL__CONNECTION_INSTANCES:
+				return connectionInstances != null && !connectionInstances.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

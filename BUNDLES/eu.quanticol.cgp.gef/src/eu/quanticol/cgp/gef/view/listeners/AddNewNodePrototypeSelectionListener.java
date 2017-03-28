@@ -18,6 +18,7 @@ public class AddNewNodePrototypeSelectionListener implements SelectionListener {
 	public void widgetSelected(SelectionEvent e) {
 		view.createNodePrototype();
 		view.refreshAddNodeButton();
+		view.refreshMovementAllowanceTab();
 	}
 
 	@Override

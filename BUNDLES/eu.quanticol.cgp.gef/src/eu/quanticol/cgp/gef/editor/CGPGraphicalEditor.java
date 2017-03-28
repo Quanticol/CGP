@@ -32,12 +32,19 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener2;
 
 import eu.quanticol.cgp.gef.SpatialModelPrototypesView;
+import eu.quanticol.cgp.gef.editor.command.CGPAddConnectionAllowanceCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPAddNodeAllowanceCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeCreateCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPComponentPrototypeDeleteCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPConnectionPrototypeCreateCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPConnectionPrototypeDeleteCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPMakeStateInitCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPNodePrototypeCreateCommand;
 import eu.quanticol.cgp.gef.editor.command.CGPNodePrototypeDeleteCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPRemoveConnectionAllowanceCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPRemoveNodeAllowanceCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPRemoveStateCommand;
+import eu.quanticol.cgp.gef.editor.command.CGPStateCreateCommand;
 import eu.quanticol.cgp.gef.editor.part.CGPEditorPartFactory;
 import eu.quanticol.cgp.gef.utils.CGPModelUtils;
 import eu.quanticol.cgp.model.CGPFactory;
@@ -58,6 +65,8 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	private CGPGraphicalEditorPalette palette;
 	private SpatialModelPrototypesView prototypesView;
 
+	
+	
 	public CGPGraphicalEditor() {
 		setEditDomain(new DefaultEditDomain(this));
 
@@ -234,5 +243,40 @@ public class CGPGraphicalEditor extends GraphicalEditorWithFlyoutPalette {
 	public void deleteConnectionPrototype(CGPConnectionPrototypeDeleteCommand command) {
 		executeCommand(command);
 		
+	}
+
+	public void createStatePrototype(CGPStateCreateCommand command) {
+           executeCommand(command);		
+	}
+
+	public void makeStateInit(CGPMakeStateInitCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void removeSelectedState(CGPRemoveStateCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void addNodePrototypeAllowance(CGPAddNodeAllowanceCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void addConnectionPrototypeAllowance(CGPAddConnectionAllowanceCommand command) {
+		executeCommand(command);
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeNodePrototypeAllowance(CGPRemoveNodeAllowanceCommand command) {
+		executeCommand(command);
+		
+	}
+
+	public void removeConnectionPrototypeAllowance(CGPRemoveConnectionAllowanceCommand command) {
+
+		executeCommand(command);
 	}
 }

@@ -104,6 +104,14 @@ public class CGPAdapterFactory extends AdapterFactoryImpl {
 				return createStateAdapter();
 			}
 			@Override
+			public Adapter caseColour(Colour object) {
+				return createColourAdapter();
+			}
+			@Override
+			public Adapter caseShape(Shape object) {
+				return createShapeAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -246,6 +254,34 @@ public class CGPAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createStateAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link eu.quanticol.cgp.model.Colour <em>Colour</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see eu.quanticol.cgp.model.Colour
+	 * @generated
+	 */
+	public Adapter createColourAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link eu.quanticol.cgp.model.Shape <em>Shape</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see eu.quanticol.cgp.model.Shape
+	 * @generated
+	 */
+	public Adapter createShapeAdapter() {
 		return null;
 	}
 

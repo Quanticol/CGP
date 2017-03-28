@@ -16,6 +16,8 @@ public class AddNewConnectionPrototypeSelectionListener implements SelectionList
 	public void widgetSelected(SelectionEvent e) {
 		view.createConnectionPrototype();
 		view.refreshAddConnectionButton();
+		view.refreshMovementAllowanceTab();
+		
 	}
 
 	@Override

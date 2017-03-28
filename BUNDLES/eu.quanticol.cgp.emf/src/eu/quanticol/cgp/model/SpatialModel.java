@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link eu.quanticol.cgp.model.SpatialModel#getComponentPrototypes <em>Component Prototypes</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.SpatialModel#getConnectionPrototypes <em>Connection Prototypes</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.SpatialModel#getLocatedElements <em>Located Elements</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.SpatialModel#getConnectionInstances <em>Connection Instances</em>}</li>
  * </ul>
  *
  * @see eu.quanticol.cgp.model.CGPPackage#getSpatialModel()
@@ -97,5 +98,23 @@ public interface SpatialModel extends EObject {
 	 * @generated
 	 */
 	EList<LocatedElement> getLocatedElements();
+
+	/**
+	 * Returns the value of the '<em><b>Connection Instances</b></em>' containment reference list.
+	 * The list contents are of type {@link eu.quanticol.cgp.model.ConnectionInstance}.
+	 * It is bidirectional and its opposite is '{@link eu.quanticol.cgp.model.ConnectionInstance#getModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Connection Instances</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Connection Instances</em>' containment reference list.
+	 * @see eu.quanticol.cgp.model.CGPPackage#getSpatialModel_ConnectionInstances()
+	 * @see eu.quanticol.cgp.model.ConnectionInstance#getModel
+	 * @model opposite="model" containment="true"
+	 * @generated
+	 */
+	EList<ConnectionInstance> getConnectionInstances();
 
 } // SpatialModel

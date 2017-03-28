@@ -64,6 +64,8 @@ public class CGPFactoryImpl extends EFactoryImpl implements CGPFactory {
 			case CGPPackage.COMPONENT_INSTANCE: return createComponentInstance();
 			case CGPPackage.CONNECTION_INSTANCE: return createConnectionInstance();
 			case CGPPackage.STATE: return createState();
+			case CGPPackage.COLOUR: return createColour();
+			case CGPPackage.SHAPE: return createShape();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,6 +149,26 @@ public class CGPFactoryImpl extends EFactoryImpl implements CGPFactory {
 	public State createState() {
 		StateImpl state = new StateImpl();
 		return state;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Colour createColour() {
+		ColourImpl colour = new ColourImpl();
+		return colour;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Shape createShape() {
+		ShapeImpl shape = new ShapeImpl();
+		return shape;
 	}
 
 	/**

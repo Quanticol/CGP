@@ -5,6 +5,7 @@ package eu.quanticol.cgp.model.impl;
 import eu.quanticol.cgp.model.CGPPackage;
 import eu.quanticol.cgp.model.ComponentPrototype;
 import eu.quanticol.cgp.model.ConnectionPrototype;
+import eu.quanticol.cgp.model.NodePrototype;
 import eu.quanticol.cgp.model.State;
 
 import java.util.Collection;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link eu.quanticol.cgp.model.impl.StateImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.StateImpl#getAllowedConnections <em>Allowed Connections</em>}</li>
  *   <li>{@link eu.quanticol.cgp.model.impl.StateImpl#getComponent <em>Component</em>}</li>
+ *   <li>{@link eu.quanticol.cgp.model.impl.StateImpl#getAllowedNodes <em>Allowed Nodes</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,6 +99,16 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * @ordered
 	 */
 	protected ComponentPrototype component;
+
+	/**
+	 * The cached value of the '{@link #getAllowedNodes() <em>Allowed Nodes</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAllowedNodes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NodePrototype> allowedNodes;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -214,6 +226,18 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<NodePrototype> getAllowedNodes() {
+		if (allowedNodes == null) {
+			allowedNodes = new EObjectResolvingEList<NodePrototype>(NodePrototype.class, this, CGPPackage.STATE__ALLOWED_NODES);
+		}
+		return allowedNodes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -226,6 +250,8 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 			case CGPPackage.STATE__COMPONENT:
 				if (resolve) return getComponent();
 				return basicGetComponent();
+			case CGPPackage.STATE__ALLOWED_NODES:
+				return getAllowedNodes();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -252,6 +278,10 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 			case CGPPackage.STATE__COMPONENT:
 				setComponent((ComponentPrototype)newValue);
 				return;
+			case CGPPackage.STATE__ALLOWED_NODES:
+				getAllowedNodes().clear();
+				getAllowedNodes().addAll((Collection<? extends NodePrototype>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -276,6 +306,9 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 			case CGPPackage.STATE__COMPONENT:
 				setComponent((ComponentPrototype)null);
 				return;
+			case CGPPackage.STATE__ALLOWED_NODES:
+				getAllowedNodes().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -296,6 +329,8 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
 				return allowedConnections != null && !allowedConnections.isEmpty();
 			case CGPPackage.STATE__COMPONENT:
 				return component != null;
+			case CGPPackage.STATE__ALLOWED_NODES:
+				return allowedNodes != null && !allowedNodes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

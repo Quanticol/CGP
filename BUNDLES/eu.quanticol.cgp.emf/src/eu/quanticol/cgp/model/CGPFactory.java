@@ -94,6 +94,24 @@ public interface CGPFactory extends EFactory {
 	State createState();
 
 	/**
+	 * Returns a new object of class '<em>Colour</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Colour</em>'.
+	 * @generated
+	 */
+	Colour createColour();
+
+	/**
+	 * Returns a new object of class '<em>Shape</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Shape</em>'.
+	 * @generated
+	 */
+	Shape createShape();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

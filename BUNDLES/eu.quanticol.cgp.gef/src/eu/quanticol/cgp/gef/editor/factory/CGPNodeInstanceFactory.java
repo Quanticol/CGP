@@ -1,6 +1,7 @@
 package eu.quanticol.cgp.gef.editor.factory;
 
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.swt.graphics.Color;
 
 import eu.quanticol.cgp.model.CGPFactory;
 import eu.quanticol.cgp.model.NodeInstance;
